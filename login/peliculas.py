@@ -1,9 +1,9 @@
-class pelicula:
+class movie:
     
-    def __init__(self, id, name, subtitles, description, duration, type):
+    def __init__(self, id, name, language, description, duration, type):
         self.__id=id
         self.__name=name
-        self.__subtitles=subtitles
+        self.__language=language
         self.__description=description
         self.__duration=duration
         self.__type=type
@@ -23,11 +23,11 @@ class pelicula:
         self.__name=name
         
     @property
-    def subtitles(self):
-        return self.__subtitles
-    @subtitles.setter
-    def subtitles(self, subtitles):
-        self.__subtitles=subtitles
+    def language(self):
+        return self.__language
+    @language.setter
+    def language(self, language):
+        self.__language=language
         
     @property
     def description(self):
@@ -53,11 +53,11 @@ class pelicula:
     def __str__(self):
         cadena= "\nID: "+str(self.__id)
         cadena+= "\nName: "+self.__name
-        cadena+= "\nSubtitle: "+self.__subtitles
-        cadena+= "\Description: "+self.__description
+        cadena+= "\nLanguage: "+self.__language
+        cadena+= "\nDescription: "+self.__description
         cadena+= "\nDuration: "+str(self.__duration)
         cadena+= "\nType: "+self.__type
         return cadena    
     
-peliculas = pelicula(1, 'Godzila VS KingKong ', 'Español', 'In this movie, these beasts will fight for conquer Manhatan, citi of New York!!', 120, '3D')
-print(peliculas)
+movie = movie(1, 'Godzila VS KingKong ', 'Español', 'In this movie, these beasts will fight for conquer Manhatan, citi of New York!!', 120, '3D')
+print(movie)
