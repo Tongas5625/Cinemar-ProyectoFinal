@@ -1,10 +1,11 @@
 class Usuario:
-    def _init_(self, nombre='', apellido='', edad=0, dni=0, mail=""):
+    def _init_(self, nombre='', apellido='', edad=0, dni=0, mail="", pass="123"):
         self.__nombre = nombre
         self.__apellido = apellido
         self.__edad = edad
         self.__dni = dni
         self.__mail = mail
+        self.__passw = passw
 
     @property
     def nombre(self):
@@ -45,6 +46,14 @@ class Usuario:
     @nombre.mail
     def mail(self,mail):
         self.__mail = mail
+        
+    @property
+    def passw(self):
+        return self.__passw
+    
+    @passw.setter
+    def passw(self,passw):
+        self.__passw = passw    
       
 
     def _str_(self):
