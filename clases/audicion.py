@@ -1,3 +1,5 @@
+from peliculas import Pelicula
+
 class Audicion:
-    def __init__(self) -> None:
+    def _init_(self,pelicula=Pelicula(),fecha=0):
         pass
