@@ -1,5 +1,6 @@
 class Usuario:
-    def _init_(self, nombre='', apellido='', edad=0, dni=0, mail="", pass="123"):
+    def _init_(self,id=0, nombre='', apellido='', edad=0, dni=0, mail="", passw="123"):
+        self.__id=id
         self.__nombre = nombre
         self.__apellido = apellido
         self.__edad = edad
@@ -7,6 +8,14 @@ class Usuario:
         self.__mail = mail
         self.__passw = passw
 
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self,id):
+        self.__id=id
+       
     @property
     def nombre(self):
         return self.__nombre
