@@ -1,7 +1,8 @@
+from datetime import datetime
 from peliculas import Pelicula
 
 class Audicion:
-    def _init_(self,id=0,pelicula=0,sala=0,fecha=0,hora=0):#atentos pelicula y sala esta clase recibira el entero id de cada unas peliculas.id sala.id
+    def _init_(self,id=0,pelicula=0,sala=0,fecha=datetime(2022,1,1,12,00),hora=datetime(2022,1,1,12,00)):#atentos pelicula y sala esta clase recibira el entero id de cada unas peliculas.id sala.id
         self._id=id
         self._pelicula=pelicula
         self._sala=sala
