@@ -39,7 +39,7 @@ class App:
         GLineEdit_56["font"] = ft
         GLineEdit_56["fg"] = "#352c2c"
         GLineEdit_56["justify"] = "center"
-        GLineEdit_56["text"] = "Entry"
+        GLineEdit_56["text"] = "correo"
         GLineEdit_56.place(x=200,y=150,width=150,height=30)
 
         GLabel_108=tk.Label(root)
@@ -57,7 +57,7 @@ class App:
         GLineEdit_184["font"] = ft
         GLineEdit_184["fg"] = "#333333"
         GLineEdit_184["justify"] = "center"
-        GLineEdit_184["text"] = "Entry"
+        GLineEdit_184["text"] = "contraseña"
         GLineEdit_184.place(x=200,y=240,width=150,height=30)
 
         GLabel_987=tk.Label(root)

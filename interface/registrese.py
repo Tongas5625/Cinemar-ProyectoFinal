@@ -38,7 +38,7 @@ class Registrese:
         GLineEdit_238["font"] = ft
         GLineEdit_238["fg"] = "#333333"
         GLineEdit_238["justify"] = "center"
-        GLineEdit_238["text"] = "Entry"
+        GLineEdit_238["text"] = "Nombre"
         GLineEdit_238.place(x=280,y=90,width=250,height=30)
 
         GLabel_69=tk.Label(root)
@@ -56,7 +56,7 @@ class Registrese:
         GLineEdit_51["font"] = ft
         GLineEdit_51["fg"] = "#333333"
         GLineEdit_51["justify"] = "center"
-        GLineEdit_51["text"] = "Entry"
+        GLineEdit_51["text"] = "Apellido"
         GLineEdit_51.place(x=280,y=140,width=250,height=30)
 
         GLabel_24=tk.Label(root)
@@ -74,7 +74,7 @@ class Registrese:
         GLineEdit_590["font"] = ft
         GLineEdit_590["fg"] = "#333333"
         GLineEdit_590["justify"] = "center"
-        GLineEdit_590["text"] = "Entry"
+        GLineEdit_590["text"] = "DNI"
         GLineEdit_590.place(x=280,y=190,width=250,height=30)
 
         GLabel_28=tk.Label(root)
@@ -92,7 +92,7 @@ class Registrese:
         GLineEdit_467["font"] = ft
         GLineEdit_467["fg"] = "#333333"
         GLineEdit_467["justify"] = "center"
-        GLineEdit_467["text"] = "Entry"
+        GLineEdit_467["text"] = "Correo"
         GLineEdit_467.place(x=280,y=240,width=250,height=30)
 
         GLabel_929=tk.Label(root)
@@ -110,7 +110,7 @@ class Registrese:
         GLineEdit_461["font"] = ft
         GLineEdit_461["fg"] = "#333333"
         GLineEdit_461["justify"] = "center"
-        GLineEdit_461["text"] = "Entry"
+        GLineEdit_461["text"] = "Contraseña"
         GLineEdit_461.place(x=280,y=300,width=250,height=30)
 
         GButton_295=tk.Button(root)

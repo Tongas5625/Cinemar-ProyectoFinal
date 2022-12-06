@@ -7,6 +7,7 @@ class Usuario:
         self.__dni = dni
         self.__mail = mail
         self.__passw = passw
+        self.__esadmin = False
 
     @property
     def id(self):
@@ -64,9 +65,17 @@ class Usuario:
     def passw(self,passw):
         self.__passw = passw    
       
-
+          
     def _str_(self):
         return "Nombre: " + self._nombre +"\nApellido: " + self.apellido + "\nEdad: "+ str(self.edad) + "\nDNI: " + str(self._dni)
 
     def mayorEdad(self):
-        return self._edad >= 18
+        return self.__edad >= 18
+    
+    def esadmin(self):
+        return self.__esadmin
+    
+    def haceradmin(self):
+        self.__esadmin=True
+        
+        
