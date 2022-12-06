@@ -30,16 +30,16 @@ class Registrese:
         NombreLab["fg"] = "#333333"
         NombreLab["justify"] = "center"
         NombreLab["text"] = "Nombre"
-        NombreLab.place(x=0,y=90,width=250,height=30)
+        NombreLab.place(x=50,y=90,width=250,height=30)
 
-        NombreBox=tk.Entry(root)
-        NombreBox["borderwidth"] = "1px"
+        self.NombreBox=tk.Entry(root)
+        self.NombreBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        NombreBox["font"] = ft
-        NombreBox["fg"] = "#333333"
-        NombreBox["justify"] = "center"
-        NombreBox["text"] = "Nombre"
-        NombreBox.place(x=280,y=90,width=250,height=30)
+        self.NombreBox["font"] = ft
+        self.NombreBox["fg"] = "#333333"
+        self.NombreBox["justify"] = "center"
+        self.NombreBox["text"] = "Nombre"
+        self.NombreBox.place(x=280,y=90,width=250,height=30)
 
         ApellidoLab=tk.Label(root)
         ApellidoLab["bg"] = "#eed88f"
@@ -48,16 +48,16 @@ class Registrese:
         ApellidoLab["fg"] = "#333333"
         ApellidoLab["justify"] = "center"
         ApellidoLab["text"] = "Apellido"
-        ApellidoLab.place(x=0,y=140,width=250,height=30)
+        ApellidoLab.place(x=50,y=140,width=250,height=30)
 
-        ApellidoBox=tk.Entry(root)
-        ApellidoBox["borderwidth"] = "1px"
+        self.ApellidoBox=tk.Entry(root)
+        self.ApellidoBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        ApellidoBox["font"] = ft
-        ApellidoBox["fg"] = "#333333"
-        ApellidoBox["justify"] = "center"
-        ApellidoBox["text"] = "Apellido"
-        ApellidoBox.place(x=280,y=140,width=250,height=30)
+        self.ApellidoBox["font"] = ft
+        self.ApellidoBox["fg"] = "#333333"
+        self.ApellidoBox["justify"] = "center"
+        self.ApellidoBox["text"] = "Apellido"
+        self.ApellidoBox.place(x=280,y=140,width=250,height=30)
 
         DniLab=tk.Label(root)
         DniLab["bg"] = "#eed88f"
@@ -66,16 +66,16 @@ class Registrese:
         DniLab["fg"] = "#333333"
         DniLab["justify"] = "center"
         DniLab["text"] = "DNI"
-        DniLab.place(x=0,y=190,width=250,height=30)
+        DniLab.place(x=50,y=190,width=250,height=30)
 
-        DniBox=tk.Entry(root)
-        DniBox["borderwidth"] = "1px"
+        self.DniBox=tk.Entry(root)
+        self.DniBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        DniBox["font"] = ft
-        DniBox["fg"] = "#333333"
-        DniBox["justify"] = "center"
-        DniBox["text"] = "DNI"
-        DniBox.place(x=280,y=190,width=250,height=30)
+        self.DniBox["font"] = ft
+        self.DniBox["fg"] = "#333333"
+        self.DniBox["justify"] = "center"
+        self.DniBox["text"] = "DNI"
+        self.DniBox.place(x=280,y=190,width=250,height=30)
 
         CorreoLab=tk.Label(root)
         CorreoLab["bg"] = "#eed88f"
@@ -84,16 +84,16 @@ class Registrese:
         CorreoLab["fg"] = "#333333"
         CorreoLab["justify"] = "center"
         CorreoLab["text"] = "Correo"
-        CorreoLab.place(x=0,y=240,width=250,height=30)
+        CorreoLab.place(x=50,y=240,width=250,height=30)
 
-        CorreoBox=tk.Entry(root)
-        CorreoBox["borderwidth"] = "1px"
+        self.CorreoBox=tk.Entry(root)
+        self.CorreoBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        CorreoBox["font"] = ft
-        CorreoBox["fg"] = "#333333"
-        CorreoBox["justify"] = "center"
-        CorreoBox["text"] = "Correo"
-        CorreoBox.place(x=280,y=240,width=250,height=30)
+        self.CorreoBox["font"] = ft
+        self.CorreoBox["fg"] = "#333333"
+        self.CorreoBox["justify"] = "center"
+        self.CorreoBox["text"] = "Correo"
+        self.CorreoBox.place(x=280,y=240,width=250,height=30)
 
         PasswLab=tk.Label(root)
         PasswLab["bg"] = "#eed88f"
@@ -102,17 +102,16 @@ class Registrese:
         PasswLab["fg"] = "#333333"
         PasswLab["justify"] = "center"
         PasswLab["text"] = "Contraseña"
-        PasswLab.place(x=0,y=300,width=250,height=30)
+        PasswLab.place(x=50,y=300,width=250,height=30)
 
-        PasswBox=tk.Entry(root)
-        PasswBox["borderwidth"] = "1px"
+        self.PasswBox=tk.Entry(root)
+        self.PasswBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        PasswBox["font"] = ft
-        PasswBox["fg"] = "#333333"
-        PasswBox["justify"] = "center"
-        PasswBox["text"] = "Contraseña"
-        PasswBox.place(x=280,y=300,width=250,height=30)
-
+        self.PasswBox["font"] = ft
+        self.PasswBox["fg"] = "#333333"
+        self.PasswBox["justify"] = "center"
+        self.PasswBox["text"] = "Contraseña"
+        self.PasswBox.place(x=280,y=300,width=250,height=30)
         RegistrarseBot=tk.Button(root)
         RegistrarseBot["bg"] = "#bbafaf"
         ft = tkFont.Font(family='Times',size=10)
@@ -124,7 +123,8 @@ class Registrese:
         RegistrarseBot["command"] = self.RegistrarseBot_command
 
     def RegistrarseBot_command(self):
-        print("command")
+        print(self.PasswBox.get())
+        print(self.NombreBox.get())
 
 if __name__ == "__main__":
     root = tk.Tk()

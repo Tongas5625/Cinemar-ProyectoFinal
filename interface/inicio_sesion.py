@@ -33,14 +33,14 @@ class App:
         CorreoLab["text"] = "correo"
         CorreoLab.place(x=200,y=110,width=150,height=25)
 
-        CorreoBox=tk.Entry(root)
-        CorreoBox["borderwidth"] = "1px"
+        self.CorreoBox=tk.Entry(root)
+        self.CorreoBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        CorreoBox["font"] = ft
-        CorreoBox["fg"] = "#352c2c"
-        CorreoBox["justify"] = "center"
-        CorreoBox["text"] = "correo"
-        CorreoBox.place(x=200,y=150,width=150,height=30)
+        self.CorreoBox["font"] = ft
+        self.CorreoBox["fg"] = "#352c2c"
+        self.CorreoBox["justify"] = "center"
+        self.CorreoBox["text"] = "correo"
+        self.CorreoBox.place(x=200,y=150,width=150,height=30)
 
         PasswdLab=tk.Label(root)
         PasswdLab["bg"] = "#e47be6"
@@ -51,13 +51,13 @@ class App:
         PasswdLab["text"] = "contraseña"
         PasswdLab.place(x=200,y=200,width=150,height=30)
 
-        PasswdBox=tk.Entry(root,show="*")
+        self.PasswdBox=tk.Entry(root,show="*")
         ft = tkFont.Font(family='Times',size=10)
-        PasswdBox["font"] = ft
-        PasswdBox["fg"] = "#333333"
-        PasswdBox["justify"] = "center"
-        PasswdBox["text"] = "contraseña"
-        PasswdBox.place(x=200,y=240,width=150,height=30)
+        self.PasswdBox["font"] = ft
+        self.PasswdBox["fg"] = "#333333"
+        self.PasswdBox["justify"] = "center"
+        self.PasswdBox["text"] = "contraseña"
+        self.PasswdBox.place(x=200,y=240,width=150,height=30)
 
         RegistreseLab=tk.Label(root)
         ft = tkFont.Font(family='Times',size=10)
@@ -88,7 +88,7 @@ class App:
         RegistreseBot["command"] = self.RegistreseBot_command
 
     def IniciarBot_command(self):
-        print("command")
+        print(f"el usuario :{self.CorreoBox.get()} esta iniciando seccion")
 
 
     def RegistreseBot_command(self):
