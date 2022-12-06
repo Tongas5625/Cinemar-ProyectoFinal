@@ -51,7 +51,7 @@ class App:
         GLabel_108["text"] = "contraseña"
         GLabel_108.place(x=200,y=200,width=150,height=30)
 
-        GLineEdit_184=tk.Entry(root)
+        GLineEdit_184=tk.Entry(root,show="*")
         GLineEdit_184["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_184["font"] = ft
