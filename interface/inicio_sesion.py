@@ -24,75 +24,74 @@ class App:
         GLabel_523["text"] = "Inicio de sesión"
         GLabel_523.place(x=200,y=20,width=150,height=50)
 
-        GLabel_697=tk.Label(root)
-        GLabel_697["bg"] = "#e47be6"
+        CorreoLab=tk.Label(root)
+        CorreoLab["bg"] = "#e47be6"
         ft = tkFont.Font(family='Times',size=10)
-        GLabel_697["font"] = ft
-        GLabel_697["fg"] = "#333333"
-        GLabel_697["justify"] = "center"
-        GLabel_697["text"] = "correo"
-        GLabel_697.place(x=200,y=110,width=150,height=25)
+        CorreoLab["font"] = ft
+        CorreoLab["fg"] = "#333333"
+        CorreoLab["justify"] = "center"
+        CorreoLab["text"] = "correo"
+        CorreoLab.place(x=200,y=110,width=150,height=25)
 
-        GLineEdit_56=tk.Entry(root)
-        GLineEdit_56["borderwidth"] = "1px"
+        CorreoBox=tk.Entry(root)
+        CorreoBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_56["font"] = ft
-        GLineEdit_56["fg"] = "#352c2c"
-        GLineEdit_56["justify"] = "center"
-        GLineEdit_56["text"] = "correo"
-        GLineEdit_56.place(x=200,y=150,width=150,height=30)
+        CorreoBox["font"] = ft
+        CorreoBox["fg"] = "#352c2c"
+        CorreoBox["justify"] = "center"
+        CorreoBox["text"] = "correo"
+        CorreoBox.place(x=200,y=150,width=150,height=30)
 
-        GLabel_108=tk.Label(root)
-        GLabel_108["bg"] = "#e47be6"
+        PasswdLab=tk.Label(root)
+        PasswdLab["bg"] = "#e47be6"
         ft = tkFont.Font(family='Times',size=10)
-        GLabel_108["font"] = ft
-        GLabel_108["fg"] = "#141314"
-        GLabel_108["justify"] = "center"
-        GLabel_108["text"] = "contraseña"
-        GLabel_108.place(x=200,y=200,width=150,height=30)
+        PasswdLab["font"] = ft
+        PasswdLab["fg"] = "#141314"
+        PasswdLab["justify"] = "center"
+        PasswdLab["text"] = "contraseña"
+        PasswdLab.place(x=200,y=200,width=150,height=30)
 
-        GLineEdit_184=tk.Entry(root,show="*")
-        GLineEdit_184["borderwidth"] = "1px"
+        PasswdBox=tk.Entry(root,show="*")
         ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_184["font"] = ft
-        GLineEdit_184["fg"] = "#333333"
-        GLineEdit_184["justify"] = "center"
-        GLineEdit_184["text"] = "contraseña"
-        GLineEdit_184.place(x=200,y=240,width=150,height=30)
+        PasswdBox["font"] = ft
+        PasswdBox["fg"] = "#333333"
+        PasswdBox["justify"] = "center"
+        PasswdBox["text"] = "contraseña"
+        PasswdBox.place(x=200,y=240,width=150,height=30)
 
-        GLabel_987=tk.Label(root)
+        RegistreseLab=tk.Label(root)
         ft = tkFont.Font(family='Times',size=10)
-        GLabel_987["font"] = ft
-        GLabel_987["fg"] = "#333333"
-        GLabel_987["justify"] = "center"
-        GLabel_987["text"] = "Si desea registrarse presione *Registrese*"
-        GLabel_987.place(x=160,y=330,width=250,height=50)
+        RegistreseLab["font"] = ft
+        RegistreseLab["fg"] = "#333333"
+        RegistreseLab["justify"] = "center"
+        RegistreseLab["text"] = "Si desea registrarse presione *Registrese*"
+        RegistreseLab.place(x=160,y=330,width=250,height=50)
 
-        GButton_627=tk.Button(root)
-        GButton_627["bg"] = "#656bbc"
+        IniciarBot=tk.Button(root)
+        IniciarBot["bg"] = "#656bbc"
         ft = tkFont.Font(family='Times',size=10)
-        GButton_627["font"] = ft
-        GButton_627["fg"] = "#000000"
-        GButton_627["justify"] = "center"
-        GButton_627["text"] = "Iniciar sesión"
-        GButton_627.place(x=230,y=290,width=90,height=30)
-        GButton_627["command"] = self.GButton_627_command
+        IniciarBot["font"] = ft
+        IniciarBot["fg"] = "#000000"
+        IniciarBot["justify"] = "center"
+        IniciarBot["text"] = "Iniciar sesión"
+        IniciarBot.place(x=230,y=290,width=90,height=30)
+        IniciarBot["command"] = self.IniciarBot_command
 
-        GButton_265=tk.Button(root)
-        GButton_265["bg"] = "#3e7b76"
+        RegistreseBot=tk.Button(root)
+        RegistreseBot["bg"] = "#3e7b76"
         ft = tkFont.Font(family='Times',size=10)
-        GButton_265["font"] = ft
-        GButton_265["fg"] = "#000000"
-        GButton_265["justify"] = "center"
-        GButton_265["text"] = "Regístrese"
-        GButton_265.place(x=170,y=370,width=200,height=35)
-        GButton_265["command"] = self.GButton_265_command
+        RegistreseBot["font"] = ft
+        RegistreseBot["fg"] = "#000000"
+        RegistreseBot["justify"] = "center"
+        RegistreseBot["text"] = "Regístrese"
+        RegistreseBot.place(x=170,y=370,width=200,height=35)
+        RegistreseBot["command"] = self.RegistreseBot_command
 
-    def GButton_627_command(self):
+    def IniciarBot_command(self):
         print("command")
 
 
-    def GButton_265_command(self):
+    def RegistreseBot_command(self):
         pass
         
 
