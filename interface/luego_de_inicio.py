@@ -23,59 +23,59 @@ class App:
         GLabel_254["text"] = "BIENVENIDO"
         GLabel_254.place(x=90,y=20,width=400,height=35)
 
-        GButton_648=tk.Button(root)
-        GButton_648["bg"] = "#e6d49a"
+        CrearReserva=tk.Button(root)
+        CrearReserva["bg"] = "#e6d49a"
         ft = tkFont.Font(family='Times',size=10)
-        GButton_648["font"] = ft
-        GButton_648["fg"] = "#000000"
-        GButton_648["justify"] = "center"
-        GButton_648["text"] = "CREAR RESERVA"
-        GButton_648.place(x=150,y=70,width=250,height=30)
-        GButton_648["command"] = self.GButton_648_command
+        CrearReserva["font"] = ft
+        CrearReserva["fg"] = "#000000"
+        CrearReserva["justify"] = "center"
+        CrearReserva["text"] = "CREAR RESERVA"
+        CrearReserva.place(x=150,y=70,width=250,height=30)
+        CrearReserva["command"] = self.CrearReserva_command
 
-        GButton_224=tk.Button(root)
-        GButton_224["bg"] = "#e6d49a"
+        ModificarReserva=tk.Button(root)
+        ModificarReserva["bg"] = "#e6d49a"
         ft = tkFont.Font(family='Times',size=10)
-        GButton_224["font"] = ft
-        GButton_224["fg"] = "#000000"
-        GButton_224["justify"] = "center"
-        GButton_224["text"] = "MODIFICAR UNA RESERVA"
-        GButton_224.place(x=150,y=120,width=250,height=30)
-        GButton_224["command"] = self.GButton_224_command
+        ModificarReserva["font"] = ft
+        ModificarReserva["fg"] = "#000000"
+        ModificarReserva["justify"] = "center"
+        ModificarReserva["text"] = "MODIFICAR UNA RESERVA"
+        ModificarReserva.place(x=150,y=120,width=250,height=30)
+        ModificarReserva["command"] = self.ModificarReserva_command
 
-        GButton_583=tk.Button(root)
-        GButton_583["bg"] = "#e6d49a"
+        VerReservas=tk.Button(root)
+        VerReservas["bg"] = "#e6d49a"
         ft = tkFont.Font(family='Times',size=10)
-        GButton_583["font"] = ft
-        GButton_583["fg"] = "#000000"
-        GButton_583["justify"] = "center"
-        GButton_583["text"] = "VER MIS RESERVAS"
-        GButton_583.place(x=150,y=170,width=250,height=30)
-        GButton_583["command"] = self.GButton_583_command
+        VerReservas["font"] = ft
+        VerReservas["fg"] = "#000000"
+        VerReservas["justify"] = "center"
+        VerReservas["text"] = "VER MIS RESERVAS"
+        VerReservas.place(x=150,y=170,width=250,height=30)
+        VerReservas["command"] = self.VerReservas_command
 
-        GButton_464=tk.Button(root)
-        GButton_464["bg"] = "#e6d49a"
+        HistoricoEntradas=tk.Button(root)
+        HistoricoEntradas["bg"] = "#e6d49a"
         ft = tkFont.Font(family='Times',size=10)
-        GButton_464["font"] = ft
-        GButton_464["fg"] = "#000000"
-        GButton_464["justify"] = "center"
-        GButton_464["text"] = "HISTORICO DE ENTRADAS"
-        GButton_464.place(x=150,y=220,width=250,height=30)
-        GButton_464["command"] = self.GButton_464_command
+        HistoricoEntradas["font"] = ft
+        HistoricoEntradas["fg"] = "#000000"
+        HistoricoEntradas["justify"] = "center"
+        HistoricoEntradas["text"] = "HISTORICO DE ENTRADAS"
+        HistoricoEntradas.place(x=150,y=220,width=250,height=30)
+        HistoricoEntradas["command"] = self.HistoricoEntradas_command
 
-    def GButton_648_command(self):
+    def CrearReserva_command(self):
         print("command")
 
 
-    def GButton_224_command(self):
+    def ModificarReserva_command(self):
         print("command")
 
 
-    def GButton_583_command(self):
+    def VerReservas_command(self):
         print("command")
 
 
-    def GButton_464_command(self):
+    def HistoricoEntradas_command(self):
         print("command")
 
 if __name__ == "__main__":

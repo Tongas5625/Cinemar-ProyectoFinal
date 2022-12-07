@@ -92,7 +92,9 @@ class App:
 
 
     def RegistreseBot_command(self):
-        pass
+        regist=tk.Tk()
+        Registrese(regist)
+        
         
 
 if __name__ == "__main__":
