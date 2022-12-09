@@ -1,9 +1,10 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import sqlite3
+from clases.usuarios import Usuario
 class Registrese:
     def __init__(self, root):
-        self.base_de_datos()
+#       self.base_de_datos()
         #setting title
         root.title("registrese")
         #setting window size
@@ -123,22 +124,12 @@ class Registrese:
         RegistrarseBot.place(x=130,y=410,width=300,height=30)
         RegistrarseBot["command"] = self.RegistrarseBot_command
 
-    def base_de_datos(self):
-        conexion=sqlite3.connect("user.db")
-        cursor=conexion.cursor()
-        cursor.execute("CREATE TABLE IF NOT EXISTS usuarios (id	INTEGER,Nombre	TEXT,Apellido	TEXT,Dni	INTEGER,Mail	TEXT,Passwd	TEXT,EsAdmin	INTEGER,PRIMARY KEY(id AUTOINCREMENT))")
-        conexion.commit()
-        conexion.close()
-        
+           
     def RegistrarseBot_command(self):
-        conexion=sqlite3.connect("user.db")
-        cursor=conexion.cursor()
-        cursor.execute(f"INSERT INTO usuarios (Nombre, Apellido, Dni, Mail, Passwd) VALUES ('{self.NombreBox.get()}','{self.ApellidoBox.get()}',{self.DniBox.get()},'{self.CorreoBox.get()}','{self.PasswBox.get()}')")
-        conexion.commit()
-        conexion.close()
         print(self.PasswBox.get())
         print(self.NombreBox.get())
-        
+        user_temp=Usuario(0,self.NombreBox.get(),self.ApellidoBox.get(),self.DniBox.get(),self.CorreoBox.get(),self.PasswBox.get())
+        print(user_temp.get_id_db())
 
 if __name__ == "__main__":
     root = tk.Tk()

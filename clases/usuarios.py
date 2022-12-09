@@ -1,6 +1,8 @@
+import sqlite3
+
 class Usuario:
-    def _init_(self,id=0, nombre='', apellido='', edad=0, dni=0, mail="", passw="123"):
-        self.__id=id
+    def __init__(self,id=0, nombre='', apellido='', edad=0, dni=0, mail="", passw="123"):
+        self.base_de_datos()
         self.__nombre = nombre
         self.__apellido = apellido
         self.__edad = edad
@@ -8,6 +10,7 @@ class Usuario:
         self.__mail = mail
         self.__passw = passw
         self.__esadmin = False
+        self.__id=id
 
     @property
     def id(self):
@@ -53,7 +56,7 @@ class Usuario:
     def mail(self):
         return self.__mail
     
-    @nombre.mail
+    @mail.setter
     def mail(self,mail):
         self.__mail = mail
         
@@ -78,4 +81,31 @@ class Usuario:
     def haceradmin(self):
         self.__esadmin=True
         
+    def base_de_datos(self):
+        conexion=sqlite3.connect("user.db")
+        cursor=conexion.cursor()
+        cursor.execute("CREATE TABLE IF NOT EXISTS usuarios (id	INTEGER,Nombre	TEXT,Apellido	TEXT,Dni	INTEGER,Mail	TEXT,Passwd	TEXT,EsAdmin	INTEGER,PRIMARY KEY(id AUTOINCREMENT))")
+        conexion.commit()
+        conexion.close()
         
+    def grabar_datos(self):
+        conexion=sqlite3.connect("user.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"INSERT INTO usuarios (Nombre, Apellido, Dni, Mail, Passwd) VALUES ('{self.__nombre}','{self.__apellido}',{self.__dni},'{self.__mail}','{self.__passw}')")
+        conexion.commit()
+        conexion.close()
+    
+    def get_id_db(self):
+        self.grabar_datos()
+        conexion=sqlite3.connect("user.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT id FROM usuarios WHERE Nombre='{self.__nombre}' AND Apellido='{self.__apellido}' AND Dni={self.__dni} AND Mail='{self.__mail}';")
+        mem=cursor.fetchone()
+        self.__id=mem[0]
+        conexion.commit()
+        conexion.close()
+        print (mem[0])       
+       
+temp=Usuario(0,"fede","cruz",40,123123,"correo",12345)
+temp.get_id_db()
+print(temp.id)
