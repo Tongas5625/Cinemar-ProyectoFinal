@@ -70,13 +70,17 @@ class Usuario:
       
           
     def __str__(self):
-        return f"Nombre: {self.__nombre} \nId:  {self.__id}  \nMail: {self.__mail}"
+        return f"Nombre: {self.__nombre} \nId:  {self.__id}  \nMail: {self.__mail} \nEsAdmin: {self.__esadmin} "
 
 #    def mayorEdad(self):
 #        return self.__edad >= 18
     
     def esadmin(self):
-        return self.__esadmin
+        if (self.__esadmin=="True"):
+            return True
+        elif (self.__esadmin=="False"):
+            return False
+        print("grave error en self.__esadmin")    
     
     def haceradmin(self):
         self.__esadmin=True
@@ -112,7 +116,7 @@ class Usuario:
         self.__dni=lista[0][3]
         self.__mail=lista[0][4]
         self.__passw=lista[0][5]
-        self.__esadmin=bool(lista[0][6])
+        self.__esadmin=lista[0][6]
         
         
     def recup_usr_db_id(self, id):
@@ -143,6 +147,7 @@ class Usuario:
 
 if (temp.recup_usr_db_mail("correo2@mail")):
     print(temp)
+    print (f"dentro de temp.esadmin {temp.esadmin()}")
 else:
     print("error")"""
 #print(temp)

@@ -128,7 +128,7 @@ class Registrese:
     def RegistrarseBot_command(self):
         print(self.PasswBox.get())
         print(self.NombreBox.get())
-        user_temp=Usuario(0,str(self.NombreBox.get()),str(self.ApellidoBox.get()),18,int(self.DniBox.get()),self.CorreoBox.get(),self.PasswBox.get())
+        user_temp=Usuario(0,str(self.NombreBox.get()),str(self.ApellidoBox.get()),int(self.DniBox.get()),self.CorreoBox.get(),self.PasswBox.get())
         print(user_temp.get_id_db())
 
 if __name__ == "__main__":

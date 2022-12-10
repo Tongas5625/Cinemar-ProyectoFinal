@@ -1,10 +1,12 @@
 import tkinter as tk
 import tkinter.font as tkFont
-
-class App:
-    def __init__(self, root):
+from clases.usuarios import Usuario
+class Menu_Usr:
+    def __init__(self, root, id_usr): #atencion recibe id de usuario
+        self.usr=Usuario()
+        self.usr.recup_usr_db_id(id_usr)#recuperamos datos de user de db
         #setting title
-        root.title("undefined")
+        root.title("Menu Usuario")
         #setting window size
         width=600
         height=500
@@ -80,5 +82,5 @@ class App:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = App(root)
+    app = Menu_Usr(root)
     root.mainloop()

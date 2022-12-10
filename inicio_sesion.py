@@ -3,6 +3,8 @@ import tkinter.font as tkFont
 from clases.usuarios import Usuario
 from registrese import Registrese
 from alerta import Alerta
+from menu_usr import Menu_Usr
+from menu_admin import Menu_Admin
 class App:
     def __init__(self, root):
         #setting title
@@ -98,6 +100,12 @@ class App:
             if (usr.passw==self.PasswdBox.get()):
                 print("usuario y contraseña coinciden en bases de datos logueando")
                 print(usr)
+                if(usr.esadmin()):
+                    menu_admin=tk.Tk()
+                    Menu_Admin(menu_admin)
+                else:
+                    menu_usr=tk.Tk()
+                    Menu_Usr(menu_usr)
             else:
                 print("contraseña incorrecta")
                 alerta=tk.Tk()
