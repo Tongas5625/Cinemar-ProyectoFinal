@@ -1,7 +1,8 @@
 import tkinter as tk
 import tkinter.font as tkFont
+from clases.usuarios import Usuario
 from registrese import Registrese
-
+from alerta import Alerta
 class App:
     def __init__(self, root):
         #setting title
@@ -89,7 +90,23 @@ class App:
 
     def IniciarBot_command(self):
         print(f"el usuario :{self.CorreoBox.get()} esta iniciando seccion")
-
+        usr=Usuario()
+        if (usr.recup_usr_db_mail(self.CorreoBox.get())):
+            print(f"el usuario existe {self.CorreoBox.get()}")
+            print("usuario encontrado en bases de datos logueando")
+                       
+            if (usr.passw==self.PasswdBox.get()):
+                print("usuario y contraseña coinciden en bases de datos logueando")
+                print(usr)
+            else:
+                print("contraseña incorrecta")
+                alerta=tk.Tk()
+                Alerta(alerta,f"Contraseña de :{self.CorreoBox.get()} incorrecta")
+        else :
+            print(f"el usuario no existe {self.CorreoBox.get()}")
+            alerta=tk.Tk()
+            Alerta(alerta,f"el Usuario :{self.CorreoBox.get()} no existe")
+            
 
     def RegistreseBot_command(self):
         regist=tk.Tk()
