@@ -13,12 +13,7 @@ class App:
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
         root.geometry(alignstr)
         root.resizable(width=False, height=False)
-        items = [
-        "Python",
-        "C",
-        "C++",
-        "Java"
-        ]
+        items = ["Nefarious", "Ten Tricks", "Transe", "Bloody September", "Song Without Words", "La casa entre los cactus", "The Reunion", "We Need to Talk", "Shut In", "The Irish Connection", "MexZombies", "59 Minutes in a Bunker with the President of the United States", "Krump", "O Rio de Janeiro de Ho Chi Minh", "Causeway", "Gap Weekend", "Nothing Compares", "Bullet Proof", "The Darker the Lake", "Stroke of Luck", "The Volunteer", "Jurassic Island", "Project Kahuta", "The Island of Forgiveness", "Little Nicholas", "Trap", "Unplugging", "Szétszakítva", "Paki", "Unsheltered", "Kingslayer", "Loren & Rose"]
         ListBox=tk.Listbox(root)
         ListBox.insert(0, *items)
         ListBox["borderwidth"] = "1px"

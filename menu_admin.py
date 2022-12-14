@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
-
+from clases.usuarios import Usuario
 class Menu_Admin:
     def __init__(self, root, id_usr):
         self.usr=Usuario()
@@ -110,5 +110,5 @@ class Menu_Admin:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = Menu_Admin(root)
+    app = Menu_Admin(root,1)
     root.mainloop()

@@ -102,10 +102,10 @@ class App:
                 print(usr)
                 if(usr.esadmin()):
                     menu_admin=tk.Tk()
-                    Menu_Admin(menu_admin)
+                    Menu_Admin(menu_admin,usr.id)
                 else:
                     menu_usr=tk.Tk()
-                    Menu_Usr(menu_usr)
+                    Menu_Usr(menu_usr,usr.id)
             else:
                 print("contraseña incorrecta")
                 alerta=tk.Tk()

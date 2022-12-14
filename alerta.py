@@ -20,7 +20,7 @@ class Alerta:
         GMessage_798["font"] = ft
         GMessage_798["fg"] = "#333333"
         GMessage_798["justify"] = "center"
-        GMessage_798["text"] = mensaje
+        GMessage_798["text"] = mensaje              #se pasa el mensaje
         GMessage_798.place(x=0,y=10,width=201,height=79)
 
 if __name__ == "__main__":
