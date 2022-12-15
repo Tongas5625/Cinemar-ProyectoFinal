@@ -21,7 +21,7 @@ class Sala:
         return self._numero
     
     @numero.setter
-    def id(self,numero):
+    def numero(self,numero):
         self._numero=numero
         
     @property
@@ -95,3 +95,7 @@ class Sala:
         print(mem[0][4])
         conexion.close()
         self.rellena(mem)
+        
+
+
+

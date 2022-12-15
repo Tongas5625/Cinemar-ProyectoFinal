@@ -1,8 +1,11 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from clases.usuarios import Usuario
+from salaypeli_adm import SalayPeli
 class Menu_Admin:
     def __init__(self, root, id_usr):
+        root.focus()
+        root.grab_set()
         self.usr=Usuario()
         self.usr.recup_usr_db_id(id_usr)
         #setting title
@@ -85,6 +88,15 @@ class Menu_Admin:
         ModificarDescuento["text"] = "Modificar descuentos"
         ModificarDescuento.place(x=160,y=330,width=250,height=30)
         ModificarDescuento["command"] = self.ModificarDescuento_command
+        
+        AtrasButton=tk.Button(root, command=root.destroy)
+        AtrasButton["bg"] = "#75FF46"
+        ft = tkFont.Font(family='Comics',size=13)
+        AtrasButton["font"] = ft
+        AtrasButton["fg"] = "#000000"
+        AtrasButton["justify"] = "center"
+        AtrasButton["text"] = "Atras"
+        AtrasButton.place(x=250,y=400,width=91,height=30)
 
     def VerReservClientes_command(self):
         print("command")
@@ -95,6 +107,9 @@ class Menu_Admin:
 
 
     def CrearSalaConPeli_command(self):
+        salaypeli=tk.Toplevel()
+        SalayPeli(salaypeli,self.usr.id)
+        
         print("command")
 
     def ModificarSala_command(self):

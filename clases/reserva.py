@@ -2,7 +2,7 @@ import sqlite3
 
 
 class Reserva:
-    def __init__(self,id=0,butaca=0,audicion=0,entradas=0,usuario=0):#recibe butaca.id recibe id de usr
+    def __init__(self,id=0,butaca=0,audicion=0,entradas=0,usuario=""):#recibe butaca.id recibe id de usr
        self.base_de_datos()
        self._id=id
        self._butaca=butaca
@@ -60,8 +60,8 @@ class Reserva:
     def grabar_datos(self): #inserta datos
         conexion=sqlite3.connect("reservas.db")
         cursor=conexion.cursor()
-        print(f"INSERT INTO reservas (Butaca, Audicion, Entrada, Usuario) VALUES ('{self._butaca}','{self._audicion}','{self._entradas}',{self._usuario});")
-        cursor.execute(f"INSERT INTO reservas (Butaca, Audicion, Entrada, Usuario) VALUES ({self._butaca},{self._audicion},{self._entradas},{self._usuario});")
+        print(f"INSERT INTO reservas (Butaca, Audicion, Entrada, Usuario) VALUES ({self._butaca},{self._audicion},{self._entradas},'{self._usuario}');")
+        cursor.execute(f"INSERT INTO reservas (Butaca, Audicion, Entrada, Usuario) VALUES ({self._butaca},{self._audicion},{self._entradas},'{self._usuario}');")
         print("grabando datos de reservas en base de reserva")
         conexion.commit()
         conexion.close()
@@ -79,7 +79,7 @@ class Reserva:
     def modificar(self):
         conexion=sqlite3.connect("reservas.db")
         cursor=conexion.cursor()
-        cursor.execute(f"UPDATE reservas SET Butaca='{self._butaca}', Audicion='{self._audicion}', Entrada={self._entradas}, Usuario='{self._usuario}' WHERE id={self._id};")
+        cursor.execute(f"UPDATE reservas SET Butaca={self._butaca}, Audicion={self._audicion}, Entrada={self._entradas}, Usuario='{self._usuario}' WHERE id={self._id};")
         conexion.commit()
         conexion.close
         
@@ -98,7 +98,7 @@ class Reserva:
         self._usuario=lista[0][4]
                 
         
-    def recup_usr_db_id(self, id):
+    def recup_reserv_db_id(self, id):
         conexion=sqlite3.connect("reservas.db")
         cursor=conexion.cursor()
         cursor.execute(f"SELECT * FROM reservas WHERE id={id};")

@@ -2,8 +2,14 @@ import tkinter as tk
 import tkinter.font as tkFont
 from clases.pelicula import Pelicula
 from clases.sala import Sala
+from clases.audicion import Audicion
+from datetime import date, time
+from alerta import Alerta
+from tkinter import messagebox
 class AudiAdminMenu:
     def __init__(self, root, peli=Pelicula(), sala=Sala()):
+        root.focus()
+        root.grab_set()
         self.sala=sala
         self.peli=peli
         #setting title
@@ -206,7 +212,7 @@ class AudiAdminMenu:
         self.HoraAudiBox["fg"] = "#333333"
         self.HoraAudiBox["justify"] = "center"
         self.HoraAudiBox["text"] = "horabox"
-        self.HoraAudiBox.place(x=60,y=380,width=30,height=25)
+        self.HoraAudiBox.place(x=60,y=375,width=30,height=25)
 
         self.MinAudiBox=tk.Entry(root)
         self.MinAudiBox["borderwidth"] = "1px"
@@ -215,19 +221,43 @@ class AudiAdminMenu:
         self.MinAudiBox["fg"] = "#333333"
         self.MinAudiBox["justify"] = "center"
         self.MinAudiBox["text"] = "minbox"
-        self.MinAudiBox.place(x=100,y=380,width=30,height=25)
+        self.MinAudiBox.place(x=100,y=375,width=30,height=25)
 
         GButton_701=tk.Button(root)
-        GButton_701["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Comics',size=10)
+        GButton_701["bg"] = "#75FF46"
+        ft = tkFont.Font(family='Comics',size=13)
         GButton_701["font"] = ft
         GButton_701["fg"] = "#000000"
         GButton_701["justify"] = "center"
-        GButton_701["text"] = "Button"
+        GButton_701["text"] = "Confirmar"
         GButton_701.place(x=230,y=360,width=91,height=30)
         GButton_701["command"] = self.GButton_701_command
+        
+        AtrasButton=tk.Button(root, command=root.destroy)
+        AtrasButton["bg"] = "#75FF46"
+        ft = tkFont.Font(family='Comics',size=13)
+        AtrasButton["font"] = ft
+        AtrasButton["fg"] = "#000000"
+        AtrasButton["justify"] = "center"
+        AtrasButton["text"] = "Atras"
+        AtrasButton.place(x=330,y=360,width=91,height=30)
+     #  AtrasButton["command"] = self.AtrasButton_command
+    
+    #def AtrasButton_command(self):
+            
 
     def GButton_701_command(self):
+        audi=Audicion()
+        audi.pelicula=self.peli.id
+        audi.sala=self.sala.id
+        dia=date(int(self.YearAudiBox.get()),int(self.MesAudiBox.get()),int(self.DiaAudiBox.get()))
+        hora=time(int(self.HoraAudiBox.get()),int(self.MinAudiBox.get()))
+        audi.fecha=dia
+        audi.hora=hora
+        audi.get_id_db()
+        mensaje=tk.Tk()
+        Alerta(mensaje,f"pelicula {self.peli.nombre} dia {audi.fecha} hora {audi.hora} sala {self.sala.numero}")
+        
         print("command")
 
 if __name__ == "__main__":

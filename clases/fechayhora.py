@@ -15,7 +15,3 @@ if (hoy>yo):
 else:
     print(yo)
     
-print (datetime.date.today())
-print (datetime.time())
-a=time()
-b=a
