@@ -1,15 +1,13 @@
-from tkinter import*
+from tkinter import *
 
-#creacion de ventana
+# creacion de ventana
 root = Tk()
-#creacion de etiqueta 
-etiqueta = Label(root,text="hola mundo")
+# creacion de etiqueta
+etiqueta = Label(root, text="hola mundo")
 
-etiqueta.place(x=500,y=200,width=70,height=100)
+etiqueta.place(x=500, y=200, width=70, height=100)
 
-#etiqueta.pack()
+# etiqueta.pack()
 
 
 root.mainloop()
-
-

@@ -2,8 +2,14 @@ import tkinter as tk
 import tkinter.font as tkFont
 from clases.pelicula import Pelicula
 from clases.sala import Sala
+from clases.audicion import Audicion
+from datetime import date, time
+from tkinter import messagebox
+
 class AudiAdminMenu:
     def __init__(self, root, peli=Pelicula(), sala=Sala()):
+        root.focus()
+        root.grab_set()
         self.sala=sala
         self.peli=peli
         #setting title
@@ -219,16 +225,41 @@ class AudiAdminMenu:
 
         GButton_701=tk.Button(root)
         GButton_701["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Comics',size=13)
         GButton_701["font"] = ft
-        GButton_701["fg"] = "#000000"
+        GButton_701["fg"] = "black"
+        GButton_701["background"] = "#75FF46"
         GButton_701["justify"] = "center"
-        GButton_701["text"] = "Button"
+        GButton_701["text"] = "Confirmar"
         GButton_701.place(x=230,y=360,width=91,height=30)
         GButton_701["command"] = self.GButton_701_command
 
     def GButton_701_command(self):
-        print("command")
+       audi=Audicion()
+       audi.pelicula=self.peli.id 
+       audi.sala=self.sala.id
+       dia=date(int(self.YearAudiBox.get()),int(self.MesAudiBox.get()),  int(self.DiaAudiBox.get()))
+       hora=time(int(self.HoraAudiBox.get()), int(self.MinAudiBox.get()))
+       audi.fecha=dia
+       audi.hora=hora
+       audi.grabar_datos()
+       messagebox.showinfo('','Confirmación Exitosa\nDatos guardados correctamente!')
+      
+      
+       AtrasButton=tk.Button(root, command=root.destroy)
+       AtrasButton["bg"] = "#75FF46"
+       ft = tkFont.Font(family='Comics',size=13)
+       AtrasButton["font"] = ft
+       AtrasButton["fg"] = "#000000"
+       AtrasButton["justify"] = "center"
+       AtrasButton["text"] = "Atras"
+       AtrasButton.place(x=330,y=360,width=91,height=30)
+       root.withdraw()
+       #AtrasButton["command"] = self.AtrasButton_command
+       #entender como seguir y eliminar la ventana 
+    #def  AtrasButton_command(self):
+    #    salaypeli=tk.Tk()
+    #    SalayPeli(salaypeli, self.usr.id)
 
 if __name__ == "__main__":
     root = tk.Tk()
