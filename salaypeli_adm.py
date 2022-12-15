@@ -3,12 +3,8 @@ import tkinter.font as tkFont
 from clases.pelicula import Pelicula
 from clases.sala import Sala
 import sqlite3
-from audiyfecha_adm import AudiAdminMenu
-class SalayPeli:
-    def __init__(self, root,id_usr):
-        root.focus()
-        root.grab_set()
-        self.usrid=id_usr
+class App:
+    def __init__(self, root):
         self.mensaje=""
         self.director=""
         self.year=""
@@ -26,7 +22,7 @@ class SalayPeli:
 
         GLabel_460=tk.Label(root)
         GLabel_460["bg"] = "#5fb878"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_460["font"] = ft
         GLabel_460["fg"] = "#333333"
         GLabel_460["justify"] = "center"
@@ -35,7 +31,7 @@ class SalayPeli:
 
         GLabel_931=tk.Label(root)
         GLabel_931["bg"] = "#5fb878"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_931["font"] = ft
         GLabel_931["fg"] = "#333333"
         GLabel_931["justify"] = "center"
@@ -44,7 +40,7 @@ class SalayPeli:
 
         self.NumeroSalaBox=tk.Entry(root)
         self.NumeroSalaBox["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         self.NumeroSalaBox["font"] = ft
         self.NumeroSalaBox["fg"] = "#333333"
         self.NumeroSalaBox["justify"] = "center"
@@ -53,7 +49,7 @@ class SalayPeli:
 
         self.AsientosSalaBox=tk.Entry(root)
         self.AsientosSalaBox["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         self.AsientosSalaBox["font"] = ft
         self.AsientosSalaBox["fg"] = "#333333"
         self.AsientosSalaBox["justify"] = "center"
@@ -61,7 +57,7 @@ class SalayPeli:
         self.AsientosSalaBox.place(x=160,y=270,width=70,height=25)
 
         GLabel_208=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_208["font"] = ft
         GLabel_208["fg"] = "#333333"
         GLabel_208["justify"] = "center"
@@ -69,7 +65,7 @@ class SalayPeli:
         GLabel_208.place(x=80,y=170,width=70,height=25)
 
         GLabel_413=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_413["font"] = ft
         GLabel_413["fg"] = "#333333"
         GLabel_413["justify"] = "center"
@@ -77,7 +73,7 @@ class SalayPeli:
         GLabel_413.place(x=80,y=220,width=70,height=25)
 
         GLabel_173=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_173["font"] = ft
         GLabel_173["fg"] = "#333333"
         GLabel_173["justify"] = "center"
@@ -86,27 +82,25 @@ class SalayPeli:
 
         GLabel_811=tk.Label(root)
         GLabel_811["bg"] = "#1e9fff"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_811["font"] = ft
         GLabel_811["fg"] = "#333333"
         GLabel_811["justify"] = "center"
         GLabel_811["text"] = "SALA"
         GLabel_811.place(x=50,y=120,width=223,height=30)
-        self.tips=["2D","3D"]
-        
-        self.TipoListBox=tk.Listbox(root,exportselection=False)
-        self.TipoListBox.insert(1,*self.tips)
+        tips=["2D","3D"]
+        self.TipoListBox=tk.Listbox(root)
+        self.TipoListBox.insert(0,*tips)
         self.TipoListBox["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         self.TipoListBox["font"] = ft
         self.TipoListBox["fg"] = "#333333"
         self.TipoListBox["justify"] = "center"
-    #    self.TipoListBox["text"] = "tipo"
         self.TipoListBox.place(x=160,y=220,width=73,height=30)
 
         GLabel_570=tk.Label(root)
         GLabel_570["bg"] = "#1e9fff"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_570["font"] = ft
         GLabel_570["fg"] = "#333333"
         GLabel_570["justify"] = "center"
@@ -114,7 +108,7 @@ class SalayPeli:
         GLabel_570.place(x=270,y=120,width=280,height=30)
 
         GLabel_40=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_40["font"] = ft
         GLabel_40["fg"] = "#333333"
         GLabel_40["justify"] = "center"
@@ -122,7 +116,7 @@ class SalayPeli:
         GLabel_40.place(x=280,y=170,width=70,height=25)
 
         GLabel_891=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_891["font"] = ft
         GLabel_891["fg"] = "#333333"
         GLabel_891["justify"] = "center"
@@ -130,7 +124,7 @@ class SalayPeli:
         GLabel_891.place(x=280,y=220,width=70,height=25)
 
         GLabel_593=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_593["font"] = ft
         GLabel_593["fg"] = "#333333"
         GLabel_593["justify"] = "center"
@@ -138,7 +132,7 @@ class SalayPeli:
         GLabel_593.place(x=280,y=270,width=70,height=25)
 
         GLabel_355=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GLabel_355["font"] = ft
         GLabel_355["fg"] = "#333333"
         GLabel_355["justify"] = "center"
@@ -154,18 +148,17 @@ class SalayPeli:
             print(a[0])
             if len(a[0])<20:
                 self.listapelis.append(a[0])
-        self.TituloListbox=tk.Listbox(root,exportselection=False)
+        self.TituloListbox=tk.Listbox(root)
         self.TituloListbox.insert(1,*self.listapelis)
         self.TituloListbox["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Comics',size=12)
+        ft = tkFont.Font(family='Times',size=12)
         self.TituloListbox["font"] = ft
         self.TituloListbox["fg"] = "#333333"
         self.TituloListbox["justify"] = "center"
-       # self.TituloListbox["text"] = "titulo"
         self.TituloListbox.place(x=350,y=170,width=180,height=30)
                 
         self.DirectorLabel=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         self.DirectorLabel["font"] = ft
         self.DirectorLabel["fg"] = "#333333"
         self.DirectorLabel["justify"] = "center"
@@ -173,7 +166,7 @@ class SalayPeli:
         self.DirectorLabel.place(x=350,y=220,width=162,height=30)
 
         self.DurLabel=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         self.DurLabel["font"] = ft
         self.DurLabel["fg"] = "#333333"
         self.DurLabel["justify"] = "center"
@@ -181,7 +174,7 @@ class SalayPeli:
         self.DurLabel.place(x=400,y=270,width=70,height=25)
 
         self.YearLabel=tk.Label(root)
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         self.YearLabel["font"] = ft
         self.YearLabel["fg"] = "#333333"
         self.YearLabel["justify"] = "center"
@@ -190,7 +183,7 @@ class SalayPeli:
 
         GButton_857=tk.Button(root)
         GButton_857["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Comics',size=10)
+        ft = tkFont.Font(family='Times',size=10)
         GButton_857["font"] = ft
         GButton_857["fg"] = "#000000"
         GButton_857["justify"] = "center"
@@ -211,23 +204,13 @@ class SalayPeli:
         self.DirectorLabel.configure(text=self.director) #
         self.DurLabel.configure(text=self.dur) #
         self.YearLabel.configure(text=self.year)#
-        salatemp=Sala()
-        salatemp.numero=self.NumeroSalaBox.get()
-        print(self.tips)
-        self.indTipo=self.TipoListBox.curselection()
-        print(self.indTipo)
-        tipoact=self.tips[self.indTipo[0]]
-        print(tipoact)
-        salatemp.tipo=tipoact
-        salatemp.asientos=self.AsientosSalaBox.get()
-        salatemp.get_id_db()
-        audifecha=tk.Toplevel()
-        AudiAdminMenu(audifecha,pelitemp,salatemp)
+        salatemp=Sala(self.NumeroSalaBox.get(),self.TipoListBox.curselection(),self.AsientosSalaBox.get())
+        
         
         
        
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = SalayPeli(root,0)
+    app = App(root)
     root.mainloop()

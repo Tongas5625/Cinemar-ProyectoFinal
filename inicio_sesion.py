@@ -91,7 +91,6 @@ class App:
         RegistreseBot["command"] = self.RegistreseBot_command
 
     def IniciarBot_command(self):
-        #root=root
         print(f"el usuario :{self.CorreoBox.get()} esta iniciando seccion")
         usr=Usuario()
         if (usr.recup_usr_db_mail(self.CorreoBox.get())):
@@ -102,10 +101,8 @@ class App:
                 print("usuario y contraseña coinciden en bases de datos logueando")
                 print(usr)
                 if(usr.esadmin()):
-                    menu_admin=tk.Toplevel()
+                    menu_admin=tk.Tk()
                     Menu_Admin(menu_admin,usr.id)
-                #    print("destruyendo root")
-                #    root.destroy
                 else:
                     menu_usr=tk.Tk()
                     Menu_Usr(menu_usr,usr.id)

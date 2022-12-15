@@ -80,7 +80,7 @@ class Menu_Usr:
     def HistoricoEntradas_command(self):
         print("command")
 
-#if __name__ == "__main__":
-#    root = tk.Tk()
-#    app = Menu_Usr(root)
-#    root.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = Menu_Usr(root,1)
+    root.mainloop()

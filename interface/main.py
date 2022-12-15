@@ -1,8 +1,18 @@
-from tkinter import Tk
-r = Tk()
-r.withdraw()
-s = r.clipboard_get()
-r.destroy()
+import tkinter as tk
+import tkinter.font as tkFont
+from inicio_sesion import App
+from registrese import Registrese
+
+root= tk.Tk()
+app = Registrese(root)
+root.mainloop()
+
+root = tk.Tk()
+app = App(root)
+root.mainloop()
+
+
+
 
 
 

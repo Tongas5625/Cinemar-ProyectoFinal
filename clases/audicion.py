@@ -1,6 +1,6 @@
 import sqlite3
 #from datetime import datetime
-#from pelicula import Pelicula
+from pelicula import Pelicula
 from datetime import date, time, datetime
 class Audicion:
     def __init__(self,id=0,pelicula=0,sala=0,fecha=date.today(),hora=time(22, 39)):#
@@ -87,8 +87,7 @@ class Audicion:
     def modificar(self):
         conexion=sqlite3.connect("audiciones.db")
         cursor=conexion.cursor()
-        print(f"UPDATE audiciones SET Pelicula={self._pelicula}, Fecha='{self._fecha}', Hora='{self._hora}', Sala={self._sala} WHERE id={self._id};")
-        cursor.execute(f"UPDATE audiciones SET Pelicula={self._pelicula}, Fecha='{self._fecha}', Hora='{self._hora}', Sala={self._sala} WHERE id={self._id};")
+        cursor.execute(f"UPDATE audiciones SET Pelicula='{self._pelicula}', Fecha='{self._fecha}', Hora={self._hora}, Sala={self._sala} WHERE id={self._id};")
         conexion.commit()
         conexion.close
         

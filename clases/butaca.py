@@ -49,8 +49,8 @@ class Butaca:
     def grabar_datos(self): #inserta datos
         conexion=sqlite3.connect("butacas.db")
         cursor=conexion.cursor()
-        print(f"INSERT INTO butacas (Sala, Numero, Libre) VALUES ({self._sala},{self._numero},{self._libre});")
-        cursor.execute(f"INSERT INTO butacas (Sala, Numero, Libre) VALUES ({self._sala},{self._numero},{self._libre});")
+        print(f"INSERT INTO butacas (Sala, Numero, Libre) VALUES ('{self._sala}','{self._numero}','{self._libre}');")
+        cursor.execute(f"INSERT INTO butacas (Sala, Numero, Libre) VALUES ('{self._sala}','{self._numero}','{self._libre}');")
         print("grabando datos de butacas en base de butacas db")
         conexion.commit()
         conexion.close()
@@ -59,7 +59,7 @@ class Butaca:
         self.grabar_datos()
         conexion=sqlite3.connect("butacas.db")
         cursor=conexion.cursor()
-        cursor.execute(f"SELECT id FROM butacas WHERE Numero={self._numero} AND Sala={self._sala} AND Libre={self._libre};")
+        cursor.execute(f"SELECT id FROM butacas WHERE Numero='{self._numero}' AND Sala='{self._sala}' AND Libre={self._libre};")
         mem=cursor.fetchone()
         self._id=mem[0]
         conexion.close()
@@ -68,8 +68,8 @@ class Butaca:
     def modificar(self):
         conexion=sqlite3.connect("butacas.db")
         cursor=conexion.cursor()
-        print(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre={self._libre}, WHERE id={self._id};")
-        cursor.execute(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre={self._libre}, WHERE id={self._id};")
+        print(f"UPDATE butacas SET Numero={self._numero}, Sala='{self._sala}', Libre={self._libre}, WHERE id={self._id};")
+        cursor.execute(f"UPDATE butacas SET Numero={self._numero}, Sala='{self._sala}', Libre={self._libre}, WHERE id={self._id};")
         conexion.close()
         
     def eliminar(self):
