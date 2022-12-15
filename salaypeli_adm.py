@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from clases.pelicula import Pelicula
+from clases.sala import Sala
 import sqlite3
 class App:
     def __init__(self, root):
@@ -87,8 +88,9 @@ class App:
         GLabel_811["justify"] = "center"
         GLabel_811["text"] = "SALA"
         GLabel_811.place(x=50,y=120,width=223,height=30)
-
+        tips=["2D","3D"]
         self.TipoListBox=tk.Listbox(root)
+        self.TipoListBox.insert(0,*tips)
         self.TipoListBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         self.TipoListBox["font"] = ft
@@ -202,6 +204,9 @@ class App:
         self.DirectorLabel.configure(text=self.director) #
         self.DurLabel.configure(text=self.dur) #
         self.YearLabel.configure(text=self.year)#
+        salatemp=Sala(self.NumeroSalaBox.get(),self.TipoListBox.curselection(),self.AsientosSalaBox.get())
+        
+        
         
        
 
