@@ -101,7 +101,6 @@ class SalayPeli:
         self.TipoListBox["font"] = ft
         self.TipoListBox["fg"] = "#333333"
         self.TipoListBox["justify"] = "center"
-    #    self.TipoListBox["text"] = "tipo"
         self.TipoListBox.place(x=160,y=220,width=73,height=30)
 
         GLabel_570=tk.Label(root)
@@ -161,7 +160,6 @@ class SalayPeli:
         self.TituloListbox["font"] = ft
         self.TituloListbox["fg"] = "#333333"
         self.TituloListbox["justify"] = "center"
-       # self.TituloListbox["text"] = "titulo"
         self.TituloListbox.place(x=350,y=170,width=180,height=30)
                 
         self.DirectorLabel=tk.Label(root)

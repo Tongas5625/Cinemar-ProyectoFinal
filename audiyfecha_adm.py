@@ -4,7 +4,7 @@ from clases.pelicula import Pelicula
 from clases.sala import Sala
 from clases.audicion import Audicion
 from datetime import date, time
-from alerta import Alerta
+#from alerta import Alerta
 from tkinter import messagebox
 class AudiAdminMenu:
     def __init__(self, root, peli=Pelicula(), sala=Sala()):
@@ -255,11 +255,9 @@ class AudiAdminMenu:
         audi.fecha=dia
         audi.hora=hora
         audi.get_id_db()
-        mensaje=tk.Tk()
-        Alerta(mensaje,f"pelicula {self.peli.nombre} dia {audi.fecha} hora {audi.hora} sala {self.sala.numero}")
+        messagebox.showinfo('Confirmación','Datos guardados correctamente')
         
-        print("command")
-
+        
 if __name__ == "__main__":
     root = tk.Tk()
     app = AudiAdminMenu(root)
