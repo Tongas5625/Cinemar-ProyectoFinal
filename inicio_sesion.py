@@ -9,7 +9,6 @@ from tkinter import messagebox
 from PIL import ImageTk, ImageColor, Image
 import os
 
-
 class App:
 
     def __init__(self, root):
@@ -21,7 +20,7 @@ class App:
         height = 500
         screenwidth = root.winfo_screenwidth()
         screenheight = root.winfo_screenheight()
-        alignstr = '%dx%d+%d+%d' % (width, height,(screenwidth - width) / 2, (screenheight -height) / 2)
+        alignstr = '%dx%d+%d+%d' % (width, height,(screenwidth - width) / 2, (screenheight - height) / 2)
         root.geometry(alignstr)
         root.resizable(width=False, height=False)
 
@@ -81,8 +80,8 @@ class App:
         IniciarBot["justify"] = "center"
         IniciarBot["text"] = "Iniciar sesión"
         IniciarBot.place(x=220, y=350, width=160, height=40)
-        IniciarBot["command"] = self.IniciarBot_command
-
+        IniciarBot.bind('<Button-1>', self.IniciarBot_command)
+                 
         RegistreseLab = tk.Label(root)
         ft = tkFont.Font(family='Times', size=15)
         RegistreseLab["bg"] = "#fff"
@@ -100,53 +99,57 @@ class App:
         RegistreseBot["justify"] = "center"
         RegistreseBot["text"] = "Regístrarse"
         RegistreseBot.place(x=430, y=445, width=120, height=40)
-        RegistreseBot["command"] = self.RegistreseBot_command
-
-    def IniciarBot_command(self):
+        RegistreseBot.bind('<Button-1>', self.RegistreseBot_command)
+        
+        
+    def IniciarBot_command(self,event):
         print(f"el usuario :{self.CorreoBox.get()} esta iniciando seccion")
         usr = Usuario()
         if (usr.recup_usr_db_mail(self.CorreoBox.get())):
             print(f"el usuario existe {self.CorreoBox.get()}")
             print("usuario encontrado en bases de datos logueando")
-
+        
             if (usr.passw == self.PasswdBox.get()):
-                messagebox.showinfo(
-                    'Info Login', f'{usr}\n{usr.nombre} y su contraseña coinciden en la base de datos. \nLogueando')
+                messagebox.showinfo('Info Login', f'{usr}\n{usr.nombre} y su contraseña coinciden en la base de datos. \nLogueando')
                 print(usr)
 
                 if (usr.esadmin()):
                     menu_admin = tk.Toplevel()
                     Menu_Admin(menu_admin, usr.id)
+                    
                 else:
                     menu_usr = tk.Tk()
                     Menu_Usr(menu_usr, usr.id)
+                   
             else:
-                messagebox.showerror('Password not match',
-                                     'Contraseña Incorrecta.')
+                messagebox.showerror('Password not match', 'Contraseña Incorrecta.')
         else:
             messagebox.showerror('User do not exist', 'El usuario no existe')
+            
 
-    def RegistreseBot_command(self):
+    def RegistreseBot_command(self,event):
         regist = tk.Tk()
         Registrese(regist)
 
-
-if __name__ == "__main__":
+def main():
     root = tk.Tk()
-
+    
     # Carpeta accedder al directorio
     carpeta_principal = os.path.dirname(__file__)
     print(carpeta_principal)
-
+    
     # Carpeta acceder imagenes
     carpeta_Imagenes = os.path.join(carpeta_principal, "imagenes")
     print(carpeta_Imagenes)
-
-    # Icono
+    
+    # Icono    
     root.iconbitmap(os.path.join(carpeta_Imagenes, "iconoLogin.ico"))
-    icoImg = ImageTk.PhotoImage(Image.open(os.path.join(carpeta_Imagenes, "fondoCine.png")).resize((600, 500)))
-    etiqueta = Label(image=icoImg)
+    lblImg = ImageTk.PhotoImage(Image.open(os.path.join(carpeta_Imagenes, "fondoCine.png")).resize((600, 500)))
+    etiqueta = Label(image=lblImg)
     etiqueta.pack()
-
+    
     app = App(root)
     root.mainloop()
+  
+if __name__ == "__main__":
+    main()
