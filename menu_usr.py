@@ -6,7 +6,7 @@ class Menu_Usr:
         self.usr=Usuario()
         self.usr.recup_usr_db_id(id_usr)#recuperamos datos de user de db
         #setting title
-        root.title("Menu Usuario")
+        root.title("Menu Usuario - Cinemar")
         #setting window size
         width=600
         height=500

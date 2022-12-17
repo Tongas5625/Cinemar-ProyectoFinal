@@ -6,7 +6,7 @@ class Registrese:
     def __init__(self, root):
 #       self.base_de_datos()
         #setting title
-        root.title("registrese")
+        root.title("Registrarse - Cinemar")
         #setting window size
         width=600
         height=500

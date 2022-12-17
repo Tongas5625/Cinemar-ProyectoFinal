@@ -1,3 +1,4 @@
+"""
 # Placeholder para inicio de session
 
 import tkinter as tk
@@ -25,3 +26,27 @@ entry.bind('<FocusIn>', on_entry_click)
 entry.bind('<FocusOut>', on_focusout)
 
 root.mainloop()
+
+"""
+class Alumno:
+    def __init__(self, name, dni, fechaIngreso,carrera):
+        
+        self.name = name
+        self.dni = dni
+        self.fechaIngreso = carrera
+        self.carrera = fechaIngreso
+        
+        
+
+             
+        
+    def pedirDatos(self):
+        tuple['Nombre' : name, 'DNI' : dni, 'FechaIngreso' : fechaIngreso, 'Carrera' : carrera]
+        name = input('Ingrese su nombre: ')
+        dni = input('Ingrese su DNI: ')
+        fechaIngreso= input('Indique la fecha en la que Ingreso: ')
+        carrera = input('Ingrese el nombre de la Carrera: ')
+        
+    
+        
+Alumno.pedirDatos('1')

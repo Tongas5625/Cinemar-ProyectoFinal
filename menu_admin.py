@@ -3,16 +3,24 @@ import tkinter as tk
 import tkinter.font as tkFont
 from clases.usuarios import Usuario
 from salaypeli_adm import SalayPeli
+from modSalAdmin import ModificarSalAdmin
+from eliminarSala_adm import EliminarSala
+from butacasDisp_admin import ButacasDisponibles
+from reservaCientes_adm import ReservaClientes
+from modifDesc import  ModificarDescuento
+
 from PIL import ImageTk, ImageColor, Image
 import os
 
 class Menu_Admin:
     
     def __init__(self, root, id_usr):
+        root.focus()
+        root.grab_set()
         self.usr=Usuario()
         self.usr.recup_usr_db_id(id_usr)
         #setting title
-        root.title("Administracion")
+        root.title("Administracion - Cinemar")
         #setting window size
         width=600
         height=500
@@ -106,33 +114,30 @@ class Menu_Admin:
         SalayPeli(salaypeli,self.usr.id)
         
         
-    
-    def ModificarSala_command(self):
-        print("command")
+    def ModificarSala_command(self, modSalAdmin):
+        modSalAdmin=tk.Toplevel()
+        ModificarSalAdmin(modSalAdmin, self.usr.id)
 
+    def EliminarSala_command(self,eliminSalAdmin):
+       eliminSalAdmin=tk.Toplevel()
+       EliminarSala(eliminSalAdmin,self.usr.id)
+        
+    def VerReservClientes_command(self, reservClients):
+        reservClients=tk.Toplevel()
+        ReservaClientes(reservClients,self.usr.id)
 
-    def EliminarSala_command(self):
-        print("command")
+    def VerButcDisp_command(self, butDisp):
+        butDisp=tk.Toplevel()
+        ButacasDisponibles(butDisp,self.usr.id)
         
-    def VerReservClientes_command(self):
-        print("command")
-        
-        
-
-    def VerButcDisp_command(self):
-        print("command")
-
-        
-        
-    def ModificarDescuento_command(self):
-        print("command")
-        
+    def ModificarDescuento_command(self, modifDesc):
+        modifDesc=tk.Toplevel()
+        ModificarDescuento(modifDesc,self.usr.id)
         
     
 def main():
     root = tk.Tk()
-    root.focus()
-    root.grab_set()
+    
     # Carpeta accedder al directorio
     carpeta_principal = os.path.dirname(__file__)
     print(carpeta_principal)

@@ -14,7 +14,7 @@ class SalayPeli:
         self.year=""
         self.dur=""
         #setting title
-        root.title("Crear Sala y Pelicula")
+        root.title("Crear Sala y Pelicula - Cinemar")
         #setting window size
         width=600
         height=500

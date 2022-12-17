@@ -131,7 +131,7 @@ class App:
             
 
     def RegistreseBot_command(self,event):
-        regist = tk.Tk()
+        regist = tk.Toplevel()
         Registrese(regist)
 
 def main():
