@@ -50,9 +50,10 @@ class App:
         self.CorreoBox["font"] = ft
         self.CorreoBox["fg"] = "black"
         self.CorreoBox["justify"] = "center"
-        self.CorreoBox["text"] = "example@example.com"
+        self.CorreoBox.insert('0','example@example.com')
         self.CorreoBox.place(x=220, y=150, width=160, height=40)
-
+        self.CorreoBox.bind('<Button-1>', lambda e: self.CorreoBox.delete(0, END))
+        
         PasswdLab = tk.Label(root)
         PasswdLab["bg"] = "#FFD700"
         ft = tkFont.Font(family='Times', size=19)
@@ -61,16 +62,18 @@ class App:
         PasswdLab["justify"] = "center"
         PasswdLab["text"] = "Contraseña"
         PasswdLab.place(x=240, y=220, width=120, height=40)
-
+        
         self.PasswdBox = tk.Entry(root, show="*")
         self.PasswdBox["borderwidth"] = "5px"
         ft = tkFont.Font(family='Times', size=13)
         self.PasswdBox["font"] = ft
         self.PasswdBox["fg"] = "#333333"
         self.PasswdBox["justify"] = "center"
-        self.PasswdBox["text"] = "contraseña"
+        self.PasswdBox.insert('0', '*'*7)
         self.PasswdBox.place(x=220, y=270, width=160, height=40)
-
+        self.PasswdBox.bind('<Button-1>', lambda e: self.PasswdBox.delete(0, END))
+        
+        
         IniciarBot = tk.Button(root)
         IniciarBot["borderwidth"] = "4px"
         IniciarBot["bg"] = "#5AF733"
@@ -148,7 +151,7 @@ def main():
     etiqueta = Label(image=lblImg)
     etiqueta.pack()
     
-    app = App(root)
+    app=App(root)
     root.mainloop()
   
 if __name__ == "__main__":
