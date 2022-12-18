@@ -2,6 +2,8 @@ import sqlite3
 #from datetime import datetime
 #from pelicula import Pelicula
 from datetime import date, time, datetime
+#from butaca import Butaca
+#from sala import Sala
 class Audicion:
     def __init__(self,id=0,pelicula=0,sala=0,fecha=date.today(),hora=time(22, 39)):#
         self.base_de_datos()
@@ -99,4 +101,3 @@ class Audicion:
         conexion.commit()
         conexion.close
         
-

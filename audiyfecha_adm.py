@@ -3,6 +3,7 @@ import tkinter.font as tkFont
 from clases.pelicula import Pelicula
 from clases.sala import Sala
 from clases.audicion import Audicion
+from clases.butaca import Butaca
 from datetime import date, time
 #from alerta import Alerta
 from tkinter import messagebox
@@ -244,8 +245,17 @@ class AudiAdminMenu:
      #  AtrasButton["command"] = self.AtrasButton_command
     
     #def AtrasButton_command(self):
-            
-
+    def creabutacas(self, audi_id): #crea n butacas para audicion.
+        for i in (range(self.sala.asientos)):
+            butemp=Butaca()
+            butemp.sala=self.sala.id
+            butemp.numero=self.sala.numero
+            butemp.audi=audi_id
+            butemp.grabar_datos()
+            print(f"creando butaca {i+1} en sala id {self.sala.id} tipo {self.sala.tipo}")        
+        print (f"creando {self.sala.asientos}")
+        print (audi_id)
+    
     def GButton_701_command(self):
         audi=Audicion()
         audi.pelicula=self.peli.id
@@ -255,9 +265,11 @@ class AudiAdminMenu:
         audi.fecha=dia
         audi.hora=hora
         audi.get_id_db()
+        self.creabutacas(audi.id)
         messagebox.showinfo('Confirmación','Datos guardados correctamente')
         
-        
+    
+    
 if __name__ == "__main__":
     root = tk.Tk()
     app = AudiAdminMenu(root)

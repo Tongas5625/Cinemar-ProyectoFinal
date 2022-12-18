@@ -1,3 +1,4 @@
+
 import sqlite3 
 
 class Sala:
@@ -43,24 +44,24 @@ class Sala:
     def base_de_datos(self):
         conexion=sqlite3.connect("salas.db")
         cursor=conexion.cursor()
-        cursor.execute("CREATE TABLE IF NOT EXISTS salas (id INTEGER, Numero	INTEGER,Tipo TEXT, Asientos	INTEGER, PRIMARY KEY(id AUTOINCREMENT));")
+        cursor.execute("CREATE TABLE IF NOT EXISTS salas (id INTEGER, Numero INTEGER UNIQUE,Tipo TEXT, Asientos	INTEGER, PRIMARY KEY(id AUTOINCREMENT));")
         conexion.commit()
         conexion.close()
    
     def grabar_datos(self): #inserta datos
         conexion=sqlite3.connect("salas.db")
         cursor=conexion.cursor()
-        print(f"INSERT INTO salas (Numero, Tipo, Asientos) VALUES ('{self._numero}','{self._tipo}','{self._asientos}');")
-        cursor.execute(f"INSERT INTO salas (Numero, Tipo, Asientos) VALUES ('{self._numero}','{self._tipo}','{self._asientos}');")
+        print(f"INSERT INTO salas (Numero, Tipo, Asientos) VALUES ({self._numero},'{self._tipo}',{self._asientos});")
+        cursor.execute(f"INSERT INTO salas (Numero, Tipo, Asientos) VALUES ({self._numero},'{self._tipo}',{self._asientos});")
         print("grabando datos de salas en base de sala")
         conexion.commit()
         conexion.close()
-    
+
     def get_id_db(self):
         self.grabar_datos()
         conexion=sqlite3.connect("salas.db")
         cursor=conexion.cursor()
-        cursor.execute(f"SELECT id FROM salas WHERE Numero='{self._numero}' AND Tipo='{self._tipo}' AND Asientos={self._asientos};")
+        cursor.execute(f"SELECT id FROM salas WHERE Numero={self._numero} AND Tipo='{self._tipo}' AND Asientos={self._asientos};")
         mem=cursor.fetchone()
         self._id=mem[0]
         conexion.close()
@@ -86,16 +87,20 @@ class Sala:
         self._tipo=lista[0][2]
         self._asientos=lista[0][3]
                
-    def recup_usr_db_id(self, id):
+    def recup_sala_db_id(self, id):
         conexion=sqlite3.connect("salas.db")
         cursor=conexion.cursor()
         cursor.execute(f"SELECT * FROM salas WHERE id={id};")
         mem=cursor.fetchall()
         print(mem[0][0])
-        print(mem[0][4])
         conexion.close()
         self.rellena(mem)
         
+        def sala(self):# metodo para crear salas desde admin crear sala
+                   #es para evitar el crear una sala con el mismo numero en el viejo menu
+            pass
+            
+         
 
 
 

@@ -4,6 +4,7 @@ from clases.pelicula import Pelicula
 from clases.sala import Sala
 import sqlite3
 from audiyfecha_adm import AudiAdminMenu
+from tkinter import messagebox
 class SalayPeli:
     def __init__(self, root,id_usr):
         root.focus()
@@ -199,29 +200,34 @@ class SalayPeli:
     def GButton_857_command(self):
         self.indice_peli=self.TituloListbox.curselection()
         print(self.indice_peli)
-        peliactual=self.listapelis[self.indice_peli[0]]
-        pelitemp=Pelicula()
-        pelitemp.recup_peli_db_nombre(peliactual)
-        print(pelitemp.duracion) #solo control consola
-        self.director=pelitemp.director #actualiza labels
-        self.dur=pelitemp.duracion      #si pueden ponerlo en alguna func
-        self.year=pelitemp.fechaEstreno #hoy me volo las neuronas
-        self.DirectorLabel.configure(text=self.director) #
-        self.DurLabel.configure(text=self.dur) #
-        self.YearLabel.configure(text=self.year)#
-        salatemp=Sala()
-        salatemp.numero=self.NumeroSalaBox.get()
-        print(self.tips)
-        self.indTipo=self.TipoListBox.curselection()
-        print(self.indTipo)
-        tipoact=self.tips[self.indTipo[0]]
-        print(tipoact)
-        salatemp.tipo=tipoact
-        salatemp.asientos=self.AsientosSalaBox.get()
-        salatemp.get_id_db()
-        audifecha=tk.Toplevel()
-        AudiAdminMenu(audifecha,pelitemp,salatemp)
-        
+        if (self.indice_peli):
+            peliactual=self.listapelis[self.indice_peli[0]]
+            pelitemp=Pelicula()
+            pelitemp.recup_peli_db_nombre(peliactual)
+            print(pelitemp.duracion) #solo control consola
+            self.director=pelitemp.director #actualiza labels
+            self.dur=pelitemp.duracion      #si pueden ponerlo en alguna func
+            self.year=pelitemp.fechaEstreno #hoy me volo las neuronas
+            self.DirectorLabel.configure(text=self.director) #
+            self.DurLabel.configure(text=self.dur) #
+            self.YearLabel.configure(text=self.year)#
+            salatemp=Sala()
+            salatemp.numero=self.NumeroSalaBox.get()
+            print(self.tips)
+            self.indTipo=self.TipoListBox.curselection()
+            if(self.indTipo):
+                print(self.indTipo)
+                tipoact=self.tips[self.indTipo[0]]
+                print(tipoact)
+                salatemp.tipo=tipoact
+                salatemp.asientos=int(self.AsientosSalaBox.get())
+                salatemp.get_id_db()
+                audifecha=tk.Toplevel()
+                AudiAdminMenu(audifecha,pelitemp,salatemp)
+            else:
+                messagebox.showerror('Elija el tipo de SALA', 'La Sala puede ser 2D o 3D')
+        else:
+            messagebox.showerror('Debe Selecionar Titulo', 'Elija Pelicula')    
         
        
 
