@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from clases.usuarios import Usuario
+from reserv_menusr import ReservaMenuUsr
 class Menu_Usr:
     def __init__(self, root, id_usr): #atencion recibe id de usuario
         self.usr=Usuario()
@@ -66,6 +67,10 @@ class Menu_Usr:
         HistoricoEntradas["command"] = self.HistoricoEntradas_command
 
     def CrearReserva_command(self):
+        ReservMenUsr=tk.Toplevel()
+        ReservaMenuUsr(ReservMenUsr,self.usr.id)
+        
+        
         print("command")
 
 
@@ -80,7 +85,7 @@ class Menu_Usr:
     def HistoricoEntradas_command(self):
         print("command")
 
-#if __name__ == "__main__":
-#    root = tk.Tk()
-#    app = Menu_Usr(root)
-#    root.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = Menu_Usr(root,7)
+    root.mainloop()
