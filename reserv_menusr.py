@@ -8,6 +8,7 @@ from clases.usuarios import Usuario
 from clases.audicion import Audicion
 from clases.pelicula import Pelicula
 from clases.butaca import Butaca
+from clases.reserva import Reserva
 from PIL import ImageTk, ImageColor, Image
 import os
 
@@ -17,7 +18,9 @@ class ReservaMenuUsr:
     def __init__(self, root, id_usr):
         self.idpeli=0# se usaran para pasar datos de metodo a metodo
         self.idaudi=0#
+        self.idsala=0
         self.fechaselect=""#
+        self.butacaselect=0
         root.focus()
         root.grab_set()
         self.usr=Usuario()
@@ -40,7 +43,7 @@ class ReservaMenuUsr:
         self.UsrLab["fg"] = "white"
         self.UsrLab["bg"] = "black"
         self.UsrLab["justify"] = "center"
-        self.UsrLab["text"] = "user@mail"
+        self.UsrLab["text"] = f"{self.usr.nombre}"
         self.UsrLab.place(x=250,y=10,width=350,height=35)
 
         self.MailLab=tk.Label(root)
@@ -49,7 +52,7 @@ class ReservaMenuUsr:
         self.MailLab["fg"] = "white"
         self.MailLab["bg"] = "black"
         self.MailLab["justify"] = "center"
-        self.MailLab["text"] = "fillmail"
+        self.MailLab["text"] = f"{self.usr.mail}"
         self.MailLab.place(x=250,y=40,width=359,height=35)
 
         GLabel_329=tk.Label(root)
@@ -253,18 +256,18 @@ class ReservaMenuUsr:
         GButton_780["font"] = ft
         GButton_780["fg"] = "white"
         GButton_780["justify"] = "center"
-        GButton_780["text"] = "Button"
+        GButton_780["text"] = "Reservar"
         GButton_780.place(x=210,y=420,width=137,height=38)
         GButton_780["command"] = self.GButton_780_command
 
-        GListBox_14=tk.Listbox(root)
-        GListBox_14["borderwidth"] = "1px"
+        self.EntradasListBox=tk.Listbox(root)
+        self.EntradasListBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Arial',size=10)
-        GListBox_14["font"] = ft
-        GListBox_14["fg"] = "white"
-        GListBox_14["bg"] = "black"
-        GListBox_14["justify"] = "center"
-        GListBox_14.place(x=300,y=350,width=57,height=40)
+        self.EntradasListBox["font"] = ft
+        self.EntradasListBox["fg"] = "white"
+        self.EntradasListBox["bg"] = "black"
+        self.EntradasListBox["justify"] = "center"
+        self.EntradasListBox.place(x=300,y=350,width=57,height=40)
 
         GLabel_828=tk.Label(root)
         ft = tkFont.Font(family='Arial',size=10)
@@ -362,17 +365,31 @@ class ReservaMenuUsr:
                     self.ButacasListBox.insert(tk.END,(i[0])) #relleno listbox butacas libres para esa audicion
         else:
             print("indice vacio")
+        
+
+    def GCheckBox_127_command(self):#este es el butaca check
+        indice_butaca=self.ButacasListBox.curselection()
+        print(indice_butaca)
+        if (indice_butaca):
+            butacaselect=self.ButacasListBox.get(indice_butaca[0])
+            auditemp=Audicion()
+            auditemp.recup_audi_id(self.idaudi)
+            butemp=Butaca()
+            butemp.ocupar(self.idaudi,auditemp.sala,butacaselect)
+            butemp.modificar()
+            self.butacaselect=butemp.id
+                
         print("command")
 
+
+    def GButton_780_command(self):#este es para crear ya la reserva
         print("command")
-
-
-    def GCheckBox_127_command(self):
-        print("command")
-
-
-    def GButton_780_command(self):
-        print("command")
+        reserv=Reserva()
+        reserv.audicion=self.idaudi
+        reserv.butaca=self.butacaselect
+        reserv.entradas=1
+        reserv.usuario=self.usr.mail
+        reserv.grabar_datos()
         
 def main():
     root = tk.Tk()

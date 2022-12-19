@@ -44,7 +44,7 @@ class Sala:
     def base_de_datos(self):
         conexion=sqlite3.connect("salas.db")
         cursor=conexion.cursor()
-        cursor.execute("CREATE TABLE IF NOT EXISTS salas (id INTEGER, Numero INTEGER UNIQUE,Tipo TEXT, Asientos	INTEGER, PRIMARY KEY(id AUTOINCREMENT));")
+        cursor.execute("CREATE TABLE IF NOT EXISTS salas (id INTEGER, Numero INTEGER ,Tipo TEXT, Asientos	INTEGER, PRIMARY KEY(id AUTOINCREMENT));")
         conexion.commit()
         conexion.close()
    

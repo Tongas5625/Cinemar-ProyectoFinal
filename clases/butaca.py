@@ -76,7 +76,7 @@ class Butaca:
         conexion=sqlite3.connect("butacas.db")
         cursor=conexion.cursor()
         print(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre={self._libre}, WHERE id={self._id};")
-        cursor.execute(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre={self._libre}, WHERE id={self._id};")
+        cursor.execute(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre='{self._libre}', WHERE id={self._id};")
         conexion.close()
         
     def eliminar(self):
@@ -99,7 +99,6 @@ class Butaca:
         cursor.execute(f"SELECT * FROM butacas WHERE id={id};")
         mem=cursor.fetchall()
         print(mem[0][0])
-        print(mem[0][4])
         conexion.close()
         self.rellena(mem)
         
@@ -117,5 +116,14 @@ class Butaca:
             print("puede que la sala este llena o no exista")
             
         
-
+    def ocupar(self,audi_id,sala_id,numbutaca):
+        conexion=sqlite3.connect("butacas.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT * FROM butacas WHERE Audicion={audi_id} AND Sala={sala_id} AND Numero={numbutaca};")
+        mem=cursor.fetchall()
+        print(mem[0][0])
+        conexion.close()
+        self.rellena(mem)
+        self.libre=False
+        
     
