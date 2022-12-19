@@ -21,6 +21,7 @@ class ReservaMenuUsr:
         self.idsala=0
         self.fechaselect=""#
         self.butacaselect=0
+        root.configure(bg='black')
         root.focus()
         root.grab_set()
         self.usr=Usuario()

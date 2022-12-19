@@ -12,6 +12,7 @@ class ReservaClientes:
     def __init__(self, root, id_usr):
         root.focus()
         root.grab_set()
+        root.configure(bg='black')
         self.usr=Usuario()
         self.usr.recup_usr_db_id(id_usr)        
         #setting title
