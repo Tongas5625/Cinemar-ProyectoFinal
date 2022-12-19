@@ -1,8 +1,12 @@
+import sqlite3
 from tkinter import *
 import tkinter as tk
 import tkinter.font as tkFont
 from clases.usuarios import Usuario
 from salaypeli_adm import SalayPeli
+from clases.usuarios import Usuario
+from clases.audicion import Audicion
+from clases.pelicula import Pelicula
 from PIL import ImageTk, ImageColor, Image
 import os
 
@@ -52,9 +56,11 @@ class ReservaMenuUsr:
         GLabel_329["justify"] = "center"
         GLabel_329["text"] = "Peliculas"
         GLabel_329.place(x=10,y=10,width=261,height=61)
-
-        self.fillPelis=tk.Listbox(root)
-        self.fillPelis["borderwidth"] = "1px"
+        self.listPelis=self.pelist()
+        self.fillPelis=tk.Listbox(root,exportselection=False)
+        self.fillPelis.insert(1,*self.listPelis)
+       #self.fillPelis=tk.Listbox(root)
+        self.fillPelis["border"]= "1px"
         ft = tkFont.Font(family='Arial',size=14)
         self.fillPelis["font"] = ft
         self.fillPelis["fg"] = "white"
@@ -110,41 +116,41 @@ class ReservaMenuUsr:
         GLabel_217["text"] = "Genero  :"
         GLabel_217.place(x=0,y=260,width=100,height=30)
 
-        GLabel_512=tk.Label(root)
+        self.FillTitulo=tk.Label(root)
         ft = tkFont.Font(family='Arial',size=10)
-        GLabel_512["font"] = ft
-        GLabel_512["fg"] = "white"
-        GLabel_512["bg"] = "black"
-        GLabel_512["justify"] = "center"
-        GLabel_512["text"] = "filltitulo"
-        GLabel_512.place(x=100,y=140,width=135,height=30)
+        self.FillTitulo["font"] = ft
+        self.FillTitulo["fg"] = "white"
+        self.FillTitulo["bg"] = "black"
+        self.FillTitulo["justify"] = "center"
+        self.FillTitulo["text"] = "filltitulo"
+        self.FillTitulo.place(x=100,y=140,width=135,height=30)
 
-        GLabel_717=tk.Label(root)
+        self.FillDirector=tk.Label(root)
         ft = tkFont.Font(family='Arial',size=10)
-        GLabel_717["font"] = ft
-        GLabel_717["fg"] = "white"
-        GLabel_717["bg"] = "black"
-        GLabel_717["justify"] = "center"
-        GLabel_717["text"] = "filldirector"
-        GLabel_717.place(x=100,y=180,width=130,height=30)
+        self.FillDirector["font"] = ft
+        self.FillDirector["fg"] = "white"
+        self.FillDirector["bg"] = "black"
+        self.FillDirector["justify"] = "center"
+        self.FillDirector["text"] = "filldirector"
+        self.FillDirector.place(x=100,y=180,width=130,height=30)
 
-        GLabel_772=tk.Label(root)
+        self.FillYear=tk.Label(root)
         ft = tkFont.Font(family='Arial',size=10)
-        GLabel_772["font"] = ft
-        GLabel_772["fg"] = "white"
-        GLabel_772["bg"] = "black"
-        GLabel_772["justify"] = "center"
-        GLabel_772["text"] = "fillaño"
-        GLabel_772.place(x=100,y=220,width=130,height=30)
+        self.FillYear["font"] = ft
+        self.FillYear["fg"] = "white"
+        self.FillYear["bg"] = "black"
+        self.FillYear["justify"] = "center"
+        self.FillYear["text"] = "fillaño"
+        self.FillYear.place(x=100,y=220,width=130,height=30)
 
-        GLabel_864=tk.Label(root)
+        self.FillGenero=tk.Label(root)
         ft = tkFont.Font(family='Arial',size=10)
-        GLabel_864["font"] = ft
-        GLabel_864["fg"] = "white"
-        GLabel_864["bg"] = "black"
-        GLabel_864["justify"] = "center"
-        GLabel_864["text"] = "fillgenero"
-        GLabel_864.place(x=100,y=260,width=130,height=30)
+        self.FillGenero["font"] = ft
+        self.FillGenero["fg"] = "white"
+        self.FillGenero["bg"] = "black"
+        self.FillGenero["justify"] = "center"
+        self.FillGenero["text"] = "fillgenero"
+        self.FillGenero.place(x=100,y=260,width=130,height=30)
 
         GListBox_769=tk.Listbox(root)
         GListBox_769["borderwidth"] = "1px"
@@ -237,10 +243,10 @@ class ReservaMenuUsr:
         GCheckBox_127["command"] = self.GCheckBox_127_command
 
         GButton_780=tk.Button(root)
-        GButton_780["bg"] = "#f0f0f0"
+        GButton_780["bg"] = "black"
         ft = tkFont.Font(family='Arial',size=10)
         GButton_780["font"] = ft
-        GButton_780["fg"] = "#000000"
+        GButton_780["fg"] = "white"
         GButton_780["justify"] = "center"
         GButton_780["text"] = "Button"
         GButton_780.place(x=210,y=420,width=137,height=38)
@@ -265,8 +271,40 @@ class ReservaMenuUsr:
         GLabel_828["bg"] = "black"
         GLabel_828.place(x=200,y=350,width=91,height=40)
 
+    def pelist(self):#rellena la una lista con los nombres de las pelis de audiciones
+        conexion=sqlite3.connect("audiciones.db")#
+        conexion2=sqlite3.connect("movies.db")
+        cursor2=conexion2.cursor()
+        cursor=conexion.cursor()#
+        cursor.execute("SELECT Pelicula FROM audiciones;")#agarra id de pelis de audi...db
+      # pelistid[]
+        pelistid=cursor.fetchall()#
+        cursor.close()
+        listapelis=[]#
+        for i in pelistid:#
+            print (i[0])
+            cursor2.execute(f"SELECT Nombre FROM pelis WHERE id={i[0]}")#agarra los nombre de las pelis de audi
+            temp=cursor2.fetchone()
+            listapelis.append(temp[0])#llena la lista para mostrar en lisbox
+        return listapelis    #devuelve
+    
+    def pelistinfo(self):#rellena los labels con la info de las pelicula selecionada
+        indice_peli=self.fillPelis.curselection()
+        print(indice_peli)
+        if (indice_peli):
+            peliactual=self.listPelis[indice_peli[0]]
+            pelitemp=Pelicula()
+            pelitemp.recup_peli_db_nombre(peliactual)
+            print(pelitemp.duracion) #solo control consola
+            self.FillDirector.configure(text=pelitemp.director) #
+            self.FillTitulo.configure(text=pelitemp.nombre) #
+            self.FillYear.configure(text=pelitemp.fechaEstreno)#
+            self.FillGenero.configure(text=pelitemp.clasificacion)
+        else:
+            print("indice vacio")
     def PeliCheck_command(self):
-        print("command")
+        self.pelistinfo()
+        print("commando")
 
 
     def GCheckBox_445_command(self):
