@@ -249,7 +249,7 @@ class AudiAdminMenu:
         for i in (range(self.sala.asientos)):
             butemp=Butaca()
             butemp.sala=self.sala.id
-            butemp.numero=self.sala.numero
+            butemp.numero=i+1
             butemp.audi=audi_id
             butemp.grabar_datos()
             print(f"creando butaca {i+1} en sala id {self.sala.id} tipo {self.sala.tipo}")        

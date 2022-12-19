@@ -7,6 +7,7 @@ from salaypeli_adm import SalayPeli
 from clases.usuarios import Usuario
 from clases.audicion import Audicion
 from clases.pelicula import Pelicula
+from clases.butaca import Butaca
 from PIL import ImageTk, ImageColor, Image
 import os
 
@@ -14,6 +15,9 @@ import os
 
 class ReservaMenuUsr:
     def __init__(self, root, id_usr):
+        self.idpeli=0# se usaran para pasar datos de metodo a metodo
+        self.idaudi=0#
+        self.fechaselect=""#
         root.focus()
         root.grab_set()
         self.usr=Usuario()
@@ -152,14 +156,14 @@ class ReservaMenuUsr:
         self.FillGenero["text"] = "fillgenero"
         self.FillGenero.place(x=100,y=260,width=130,height=30)
 
-        GListBox_769=tk.Listbox(root)
-        GListBox_769["borderwidth"] = "1px"
+        self.audiFechaLBox=tk.Listbox(root)
+        self.audiFechaLBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Arial',size=10)
-        GListBox_769["font"] = ft
-        GListBox_769["fg"] = "white"
-        GListBox_769["bg"] = "black"
-        GListBox_769["justify"] = "center"
-        GListBox_769.place(x=375,y=150,width=101,height=30)
+        self.audiFechaLBox["font"] = ft
+        self.audiFechaLBox["fg"] = "white"
+        self.audiFechaLBox["bg"] = "black"
+        self.audiFechaLBox["justify"] = "center"
+        self.audiFechaLBox.place(x=375,y=150,width=101,height=30)
 
         GLabel_666=tk.Label(root)
         ft = tkFont.Font(family='Arial',size=10)
@@ -178,48 +182,49 @@ class ReservaMenuUsr:
         GLabel_255["justify"] = "center"
         GLabel_255["text"] = "Horarios"
         GLabel_255.place(x=290,y=210,width=70,height=31)
-
-        GListBox_156=tk.Listbox(root)
-        GListBox_156["borderwidth"] = "1px"
+        
+       
+        self.audiHorarioListB=tk.Listbox(root,exportselection=False)
+        self.audiHorarioListB["borderwidth"] = "1px"
         ft = tkFont.Font(family='Arial',size=10)
-        GListBox_156["font"] = ft
-        GListBox_156["fg"] = "white"
-        GListBox_156["bg"] = "black"
-        GListBox_156["justify"] = "center"
-        GListBox_156.place(x=370,y=210,width=101,height=31)
+        self.audiHorarioListB["font"] = ft
+        self.audiHorarioListB["fg"] = "white"
+        self.audiHorarioListB["bg"] = "black"
+        self.audiHorarioListB["justify"] = "center"
+        self.audiHorarioListB.place(x=370,y=210,width=101,height=31)
 
-        GCheckBox_445=tk.Checkbutton(root)
+        self.FechaCheck=tk.Checkbutton(root)
         ft = tkFont.Font(family='Arial',size=10)
-        GCheckBox_445["font"] = ft
-        GCheckBox_445["fg"] = "white"
-        GCheckBox_445["bg"] = "black"
-        GCheckBox_445["justify"] = "center"
-        GCheckBox_445["text"] = "FechaCheck"
-        GCheckBox_445.place(x=370,y=180,width=85,height=31)
-        GCheckBox_445["offvalue"] = "0"
-        GCheckBox_445["onvalue"] = "1"
-        GCheckBox_445["command"] = self.GCheckBox_445_command
+        self.FechaCheck["font"] = ft
+        self.FechaCheck["fg"] = "white"
+        self.FechaCheck["bg"] = "black"
+        self.FechaCheck["justify"] = "center"
+        self.FechaCheck["text"] = "FechaCheck"
+        self.FechaCheck.place(x=370,y=180,width=85,height=31)
+        self.FechaCheck["offvalue"] = "0"
+        self.FechaCheck["onvalue"] = "1"
+        self.FechaCheck["command"] = self.FechaCheck_command
 
-        GCheckBox_747=tk.Checkbutton(root)
+        self.HorarioCheck=tk.Checkbutton(root)
         ft = tkFont.Font(family='Arial',size=10)
-        GCheckBox_747["font"] = ft
-        GCheckBox_747["fg"] = "white"
-        GCheckBox_747["bg"] = "black"
-        GCheckBox_747["justify"] = "center"
-        GCheckBox_747["text"] = "HorarioCheck"
-        GCheckBox_747.place(x=370,y=240,width=85,height=31)
-        GCheckBox_747["offvalue"] = "0"
-        GCheckBox_747["onvalue"] = "1"
-        GCheckBox_747["command"] = self.GCheckBox_747_command
+        self.HorarioCheck["font"] = ft
+        self.HorarioCheck["fg"] = "white"
+        self.HorarioCheck["bg"] = "black"
+        self.HorarioCheck["justify"] = "center"
+        self.HorarioCheck["text"] = "HorarioCheck"
+        self.HorarioCheck.place(x=370,y=240,width=85,height=31)
+        self.HorarioCheck["offvalue"] = "0"
+        self.HorarioCheck["onvalue"] = "1"
+        self.HorarioCheck["command"] = self.HorarioCheck_command
 
-        GListBox_419=tk.Listbox(root)
-        GListBox_419["borderwidth"] = "1px"
+        self.ButacasListBox=tk.Listbox(root,exportselection=False)
+        self.ButacasListBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Arial',size=10)
-        GListBox_419["font"] = ft
-        GListBox_419["fg"] = "white"
-        GListBox_419["bg"] = "black"
-        GListBox_419["justify"] = "center"
-        GListBox_419.place(x=370,y=280,width=101,height=31)
+        self.ButacasListBox["font"] = ft
+        self.ButacasListBox["fg"] = "white"
+        self.ButacasListBox["bg"] = "black"
+        self.ButacasListBox["justify"] = "center"
+        self.ButacasListBox.place(x=370,y=280,width=101,height=31)
 
         GLabel_301=tk.Label(root)
         ft = tkFont.Font(family='Arial',size=10)
@@ -300,18 +305,65 @@ class ReservaMenuUsr:
             self.FillTitulo.configure(text=pelitemp.nombre) #
             self.FillYear.configure(text=pelitemp.fechaEstreno)#
             self.FillGenero.configure(text=pelitemp.clasificacion)
+            self.idpeli=pelitemp.id
+            return pelitemp.id        
         else:
             print("indice vacio")
+    
+    def fillaudinfofecha(self):
+        audi=Audicion()
+        idlist=audi.recup_audi_pelisid(self.idpeli) # recibe un lista de tuplas de audicines con la misma peli
+        print(idlist)
+        if idlist:
+            for i in idlist:
+                print(i[0])
+                audi.recup_audi_id(i[0])
+                self.audiFechaLBox.insert(tk.END,(audi.fecha))  
+    
     def PeliCheck_command(self):
         self.pelistinfo()
+        self.fillaudinfofecha()
         print("commando")
 
 
-    def GCheckBox_445_command(self):
+    def FechaCheck_command(self):
+        indice_fecha=self.audiFechaLBox.curselection()
+        print(indice_fecha)
+        if (indice_fecha):
+            fechaselect=self.audiFechaLBox.get(indice_fecha[0])
+            self.fechaselect=fechaselect
+            auditemp=Audicion()
+            listhorarios=auditemp.horarios_audiypeli(self.idpeli,fechaselect) #devolvera una lista de horarios para esa fecha y esa peli
+            print (listhorarios)
+            if listhorarios:
+                for i in listhorarios:
+                    print(i[0])
+                    self.audiHorarioListB.insert(tk.END,(i[0])) #relleno listbox de horarios disponible para esa fecha y peli
+                 
+        else:
+            print("indice vacio")
         print("command")
 
 
-    def GCheckBox_747_command(self):
+    def HorarioCheck_command(self):
+        indice_horario=self.audiHorarioListB.curselection()
+        print(indice_horario)
+        if (indice_horario):
+            horaselect=self.audiHorarioListB.get(indice_horario[0])
+            auditemp=Audicion()
+            auditemp.pelihorayfecha(self.idpeli,horaselect,self.fechaselect) #obtendremos id de audi a por el horario fecha y peli
+            self.idaudi=auditemp.id
+            print (auditemp.id)
+            butacatemp=Butaca()
+            listbutacas=butacatemp.getlibres(auditemp.id) #recibiremos butacas libres para esa audicion concreta
+            if listbutacas:
+                for i in listbutacas:
+                    print(i[0])
+                    self.ButacasListBox.insert(tk.END,(i[0])) #relleno listbox butacas libres para esa audicion
+        else:
+            print("indice vacio")
+        print("command")
+
         print("command")
 
 

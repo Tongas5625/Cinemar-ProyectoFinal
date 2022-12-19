@@ -101,3 +101,56 @@ class Audicion:
         conexion.commit()
         conexion.close
         
+    def recup_audi_pelisid(self,pelis_id):#devuelve lista de id de audiciones con la misma pelicula
+        conexion=sqlite3.connect("audiciones.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT id FROM audiciones WHERE Pelicula={pelis_id};")
+        audilist=cursor.fetchall()
+        conexion.close
+        if audilist:
+            return audilist
+        else:
+            print("no hay audiciones con esa pelicula")
+            
+    def recup_audi_id(self,id):#rellena con datos de db
+        conexion=sqlite3.connect("audiciones.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT * FROM audiciones WHERE id={id};")
+        audi=cursor.fetchall()
+        conexion.close
+        print(f"contenido de audi {audi}")
+        if audi:
+            self._id=audi[0][0]
+            self._pelicula=audi[0][1]
+            self._sala=audi[0][2]
+            self._fecha=audi[0][3]
+            self._hora=audi[0][4]    
+        else:
+            print("id de audicion no encontrado")
+    
+    def horarios_audiypeli(self,id_peli,fecha):#devuelve una lista de horarios para audi y peli
+        conexion=sqlite3.connect("audiciones.db")
+        cursor=conexion.cursor()
+        print(f"SELECT Hora FROM audiciones WHERE Pelicula={id_peli} AND Fecha='{fecha}';")
+        cursor.execute(f"SELECT Hora FROM audiciones WHERE Pelicula={id_peli} AND Fecha='{fecha}';")
+        horarioslist=cursor.fetchall()
+        conexion.close()
+        if horarioslist:
+            return horarioslist
+        else:
+            print("no hay horarios")
+            
+    def pelihorayfecha(self,id_peli,hora,fecha):
+        conexion=sqlite3.connect("audiciones.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT id FROM audiciones WHERE Pelicula={id_peli} AND Fecha='{fecha}' AND Hora='{hora}';")
+        audi=cursor.fetchone()
+        conexion.close
+        print(f"contenido de audi {audi}")
+        if audi:
+            self._id=audi[0]
+            return self._id    
+        else:
+            print("id de audicion no encontrado")
+        
+            

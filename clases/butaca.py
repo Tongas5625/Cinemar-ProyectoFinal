@@ -103,5 +103,19 @@ class Butaca:
         conexion.close()
         self.rellena(mem)
         
+    def getlibres(self, audi_id):
+        conexion=sqlite3.connect("butacas.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT Numero FROM butacas WHERE Audicion={audi_id} AND Libre='True';")
+        mem=cursor.fetchall()
+        print(mem[0][0])
+        
+        conexion.close()
+        if mem:
+            return mem
+        else:
+            print("puede que la sala este llena o no exista")
+            
+        
 
     
