@@ -75,8 +75,8 @@ class Butaca:
     def modificar(self):
         conexion=sqlite3.connect("butacas.db")
         cursor=conexion.cursor()
-        print(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre={self._libre}, WHERE id={self._id};")
-        cursor.execute(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre='{self._libre}', WHERE id={self._id};")
+        print(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre='{self._libre}' WHERE id={self._id};")
+        cursor.execute(f"UPDATE butacas SET Numero={self._numero}, Sala={self._sala}, Libre='{self._libre}' WHERE id={self._id};")
         conexion.close()
         
     def eliminar(self):
