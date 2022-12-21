@@ -2,6 +2,7 @@ import sqlite3
 from tkinter import *
 import tkinter as tk
 import tkinter.font as tkFont
+from tkinter import messagebox
 from clases.usuarios import Usuario
 from salaypeli_adm import SalayPeli
 from clases.usuarios import Usuario
@@ -290,12 +291,15 @@ class ReservaMenuUsr:
         pelistid=cursor.fetchall()#
         cursor.close()
         listapelis=[]#
-        for i in pelistid:#
-            print (i[0])
-            cursor2.execute(f"SELECT Nombre FROM pelis WHERE id={i[0]}")#agarra los nombre de las pelis de audi
-            temp=cursor2.fetchone()
-            listapelis.append(temp[0])#llena la lista para mostrar en lisbox
-        return listapelis    #devuelve
+        if pelistid:
+            for i in pelistid:#
+                print (i[0])
+                cursor2.execute(f"SELECT Nombre FROM pelis WHERE id={i[0]}")#agarra los nombre de las pelis de audi
+                temp=cursor2.fetchone()
+                listapelis.append(temp[0])#llena la lista para mostrar en lisbox
+            return listapelis    #devuelve
+        else:
+            messagebox.showerror('Seleccione Peli')
     
     def pelistinfo(self):#rellena los labels con la info de las pelicula selecionada
         indice_peli=self.fillPelis.curselection()
@@ -313,7 +317,8 @@ class ReservaMenuUsr:
             return pelitemp.id        
         else:
             print("indice vacio")
-    
+            messagebox.showerror('Seleccione Peli',"seleccione Pelicula")
+             
     def fillaudinfofecha(self):
         audi=Audicion()
         idlist=audi.recup_audi_pelisid(self.idpeli) # recibe un lista de tuplas de audicines con la misma peli
@@ -346,7 +351,7 @@ class ReservaMenuUsr:
                  
         else:
             print("indice vacio")
-        print("command")
+            messagebox.showerror('Seleccione Fecha',"seleccione Fecha")
 
 
     def HorarioCheck_command(self):
@@ -366,7 +371,7 @@ class ReservaMenuUsr:
                     self.ButacasListBox.insert(tk.END,(i[0])) #relleno listbox butacas libres para esa audicion
         else:
             print("indice vacio")
-        
+            messagebox.showerror('Seleccione hora',"seleccione hora")
 
     def GCheckBox_127_command(self):#este es el butaca check
         indice_butaca=self.ButacasListBox.curselection()
@@ -379,8 +384,9 @@ class ReservaMenuUsr:
             butemp.ocupar(self.idaudi,auditemp.sala,butacaselect)
             butemp.modificar()
             self.butacaselect=butemp.id
-                
-        print("command")
+        else:
+            messagebox.showerror('Seleccione Asiento',"seleccione Asiento")        
+        
 
 
     def GButton_780_command(self):#este es para crear ya la reserva

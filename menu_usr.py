@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
+from tkinter import messagebox
 from clases.usuarios import Usuario
 from reserv_menusr import ReservaMenuUsr
 class Menu_Usr:
@@ -9,6 +10,7 @@ class Menu_Usr:
         #setting title
         root.title("Menu Usuario - Cinemar")
         #setting window size
+        root.configure(bg="black")
         width=600
         height=500
         screenwidth = root.winfo_screenwidth()
@@ -24,7 +26,7 @@ class Menu_Usr:
         GLabel_254["fg"] = "#0f0707"
         GLabel_254["justify"] = "center"
         GLabel_254["text"] = "BIENVENIDO"
-        GLabel_254.place(x=90,y=20,width=400,height=35)
+        GLabel_254.place(x=100,y=20,width=400,height=35)
 
         CrearReserva=tk.Button(root)
         CrearReserva["bg"] = "#e6d49a"
@@ -33,7 +35,7 @@ class Menu_Usr:
         CrearReserva["fg"] = "#000000"
         CrearReserva["justify"] = "center"
         CrearReserva["text"] = "CREAR RESERVA"
-        CrearReserva.place(x=150,y=70,width=250,height=30)
+        CrearReserva.place(x=170,y=70,width=250,height=30)
         CrearReserva["command"] = self.CrearReserva_command
 
         ModificarReserva=tk.Button(root)
@@ -43,7 +45,7 @@ class Menu_Usr:
         ModificarReserva["fg"] = "#000000"
         ModificarReserva["justify"] = "center"
         ModificarReserva["text"] = "MODIFICAR UNA RESERVA"
-        ModificarReserva.place(x=150,y=120,width=250,height=30)
+        ModificarReserva.place(x=170,y=120,width=250,height=30)
         ModificarReserva["command"] = self.ModificarReserva_command
 
         VerReservas=tk.Button(root)
@@ -53,7 +55,7 @@ class Menu_Usr:
         VerReservas["fg"] = "#000000"
         VerReservas["justify"] = "center"
         VerReservas["text"] = "VER MIS RESERVAS"
-        VerReservas.place(x=150,y=170,width=250,height=30)
+        VerReservas.place(x=170,y=170,width=250,height=30)
         VerReservas["command"] = self.VerReservas_command
 
         HistoricoEntradas=tk.Button(root)
@@ -63,27 +65,29 @@ class Menu_Usr:
         HistoricoEntradas["fg"] = "#000000"
         HistoricoEntradas["justify"] = "center"
         HistoricoEntradas["text"] = "HISTORICO DE ENTRADAS"
-        HistoricoEntradas.place(x=150,y=220,width=250,height=30)
+        HistoricoEntradas.place(x=170,y=220,width=250,height=30)
         HistoricoEntradas["command"] = self.HistoricoEntradas_command
 
     def CrearReserva_command(self):
         ReservMenUsr=tk.Toplevel()
         ReservaMenuUsr(ReservMenUsr,self.usr.id)
         
-        
-        print("command")
-
+       
 
     def ModificarReserva_command(self):
+        messagebox.showinfo('Pagina en Construcion', "Que Miras?, Anda paya bobo")
         print("command")
 
 
     def VerReservas_command(self):
+        messagebox.showinfo('Pagina en Construcion', "Que Miras?, Anda paya bobo")
         print("command")
 
 
     def HistoricoEntradas_command(self):
+        messagebox.showinfo('Pagina en Construcion', "Que Miras?, Anda paya bobo")
         print("command")
+        
 
 if __name__ == "__main__":
     root = tk.Tk()
