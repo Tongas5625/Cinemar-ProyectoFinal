@@ -7,6 +7,15 @@ from clases.butaca import Butaca
 from datetime import date, time
 #from alerta import Alerta
 from tkinter import messagebox
+def validate(input):
+      
+    if input.isdigit():
+        return input
+    else:
+        return False
+                      
+    
+
 class AudiAdminMenu:
     def __init__(self, root, peli=Pelicula(), sala=Sala()):
         root.focus()
@@ -16,6 +25,7 @@ class AudiAdminMenu:
         #setting title
         root.title("Audicion Confirma Fecha Y Hora")
         #setting window size
+        reg = root.register(validate)
         width=600
         height=500
         screenwidth = root.winfo_screenwidth()
@@ -180,6 +190,7 @@ class AudiAdminMenu:
         GLabel_467.place(x=0,y=380,width=70,height=25)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
         self.DiaAudiBox=tk.Entry(root)
+        self.DiaAudiBox.config(validate="key", validatecommand=(validate, '%P'))
         self.DiaAudiBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.DiaAudiBox["font"] = ft
@@ -187,7 +198,7 @@ class AudiAdminMenu:
         self.DiaAudiBox["justify"] = "center"
         self.DiaAudiBox["text"] = "dia"
         self.DiaAudiBox.place(x=60,y=340,width=30,height=25)
-        
+                
         self.MesAudiBox=tk.Entry(root)
         self.MesAudiBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
