@@ -1,0 +1,7 @@
+#es la paleta de colores 
+10%  E5E5CB
+19%  D5CEA3
+40   3C2A21
+fondo   1A120B
+
+1A120B

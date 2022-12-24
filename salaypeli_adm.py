@@ -212,20 +212,27 @@ class SalayPeli:
             self.DurLabel.configure(text=self.dur) #
             self.YearLabel.configure(text=self.year)#
             salatemp=Sala()
-            salatemp.numero=self.NumeroSalaBox.get()
-            print(self.tips)
-            self.indTipo=self.TipoListBox.curselection()
-            if(self.indTipo):
-                print(self.indTipo)
-                tipoact=self.tips[self.indTipo[0]]
-                print(tipoact)
-                salatemp.tipo=tipoact
-                salatemp.asientos=int(self.AsientosSalaBox.get())
-                salatemp.get_id_db()
-                audifecha=tk.Toplevel()
-                AudiAdminMenu(audifecha,pelitemp,salatemp)
+            tempNumero=self.NumeroSalaBox.get()
+            if (tempNumero):
+                if(not(salatemp.get_numsala_db(tempNumero))):
+                    salatemp.numero=self.NumeroSalaBox.get()
+                    print(self.tips)
+                    self.indTipo=self.TipoListBox.curselection()
+                    if(self.indTipo):
+                        print(self.indTipo)
+                        tipoact=self.tips[self.indTipo[0]]
+                        print(tipoact)
+                        salatemp.tipo=tipoact
+                        salatemp.asientos=int(self.AsientosSalaBox.get())
+                        salatemp.get_id_db()
+                        audifecha=tk.Toplevel()
+                        AudiAdminMenu(audifecha,pelitemp,salatemp)
+                    else:
+                        messagebox.showerror('Elija el tipo de SALA', 'La Sala puede ser 2D o 3D')
+                else:
+                    messagebox.showerror("La Sala ya existe","si desea borrarla debe borrarla en el menu borrar sala")         
             else:
-                messagebox.showerror('Elija el tipo de SALA', 'La Sala puede ser 2D o 3D')
+                messagebox.showerror('Introduzca numero de sala', 'debe ingresar el numero de sala')
         else:
             messagebox.showerror('Debe Selecionar Titulo', 'Elija Pelicula')    
         

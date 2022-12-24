@@ -67,6 +67,18 @@ class Sala:
         conexion.close()
         print (mem[0]) 
         
+    def get_numsala_db(self,num):#consulta si existe el num de sala
+        conexion=sqlite3.connect("salas.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT * FROM salas WHERE Numero = {num};")
+        temp=cursor.fetchall()
+        print (temp)
+        if temp:
+            self.rellena(temp)
+            return True
+        else:
+            return False
+        
     def modificar(self):
         conexion=sqlite3.connect("salas.db")
         cursor=conexion.cursor()
@@ -96,10 +108,14 @@ class Sala:
         conexion.close()
         self.rellena(mem)
         
-        def sala(self):# metodo para crear salas desde admin crear sala
+    def sala(self):# metodo para crear salas desde admin crear sala
                    #es para evitar el crear una sala con el mismo numero en el viejo menu
-            pass
+        pass
             
+sale=Sala()
+if(sale.get_numsala_db(2)):
+    print("la sala 2 existe")
+
          
 
 
