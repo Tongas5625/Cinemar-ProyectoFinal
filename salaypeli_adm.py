@@ -5,10 +5,26 @@ from clases.sala import Sala
 import sqlite3
 from audiyfecha_adm import AudiAdminMenu
 from tkinter import messagebox
+
+def callback(input):
+      
+    if input.isdigit():
+        print(input)
+        return True
+                          
+    elif input is "":
+        print(input)
+        return True
+  
+    else:
+        print(input)
+        return False
+    
 class SalayPeli:
     def __init__(self, root,id_usr):
         root.focus()
         root.grab_set()
+        reg=root.register(callback)
         self.usrid=id_usr
         self.mensaje=""
         self.director=""
@@ -16,6 +32,7 @@ class SalayPeli:
         self.dur=""
         #setting title
         root.title("Crear Sala y Pelicula - Cinemar")
+        root.configure(bg="#1A120B")
         #setting window size
         width=600
         height=500
@@ -44,6 +61,7 @@ class SalayPeli:
         GLabel_931.place(x=50,y=440,width=500,height=39)
 
         self.NumeroSalaBox=tk.Entry(root)
+        self.NumeroSalaBox.config(validate="key", validatecommand=(reg, '%P'))
         self.NumeroSalaBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.NumeroSalaBox["font"] = ft
@@ -53,6 +71,7 @@ class SalayPeli:
         self.NumeroSalaBox.place(x=160,y=170,width=70,height=25)
 
         self.AsientosSalaBox=tk.Entry(root)
+        self.AsientosSalaBox.config(validate="key", validatecommand=(reg, '%P'))
         self.AsientosSalaBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.AsientosSalaBox["font"] = ft

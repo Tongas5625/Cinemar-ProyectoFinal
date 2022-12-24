@@ -10,8 +10,15 @@ from tkinter import messagebox
 def validate(input):
       
     if input.isdigit():
-        return input
+        print(input)
+        return True
+                          
+    elif input is "":
+        print(input)
+        return True
+  
     else:
+        print(input)
         return False
                       
     
@@ -24,6 +31,7 @@ class AudiAdminMenu:
         self.peli=peli
         #setting title
         root.title("Audicion Confirma Fecha Y Hora")
+        root.configure(bg="#1A120B")
         #setting window size
         reg = root.register(validate)
         width=600
@@ -179,7 +187,7 @@ class AudiAdminMenu:
         FechaAudiLab["fg"] = "#333333"
         FechaAudiLab["justify"] = "center"
         FechaAudiLab["text"] = "Fecha"
-        FechaAudiLab.place(x=0,y=350,width=70,height=25)
+        FechaAudiLab.place(x=0,y=375,width=70,height=25)
 
         GLabel_467=tk.Label(root)
         ft = tkFont.Font(family='Comics',size=10)
@@ -187,10 +195,10 @@ class AudiAdminMenu:
         GLabel_467["fg"] = "#333333"
         GLabel_467["justify"] = "center"
         GLabel_467["text"] = "Hora"
-        GLabel_467.place(x=0,y=380,width=70,height=25)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        GLabel_467.place(x=0,y=340,width=70,height=25)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
         self.DiaAudiBox=tk.Entry(root)
-        self.DiaAudiBox.config(validate="key", validatecommand=(validate, '%P'))
+        self.DiaAudiBox.config(validate="key", validatecommand=(reg, '%P'))
         self.DiaAudiBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.DiaAudiBox["font"] = ft
@@ -200,6 +208,7 @@ class AudiAdminMenu:
         self.DiaAudiBox.place(x=60,y=340,width=30,height=25)
                 
         self.MesAudiBox=tk.Entry(root)
+        self.MesAudiBox.config(validate="key", validatecommand=(reg, '%P'))
         self.MesAudiBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.MesAudiBox["font"] = ft
@@ -209,6 +218,7 @@ class AudiAdminMenu:
         self.MesAudiBox.place(x=95,y=340,width=30,height=25)
         
         self.YearAudiBox=tk.Entry(root)
+        self.YearAudiBox.config(validate="key", validatecommand=(reg, '%P'))
         self.YearAudiBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.YearAudiBox["font"] = ft
@@ -218,6 +228,7 @@ class AudiAdminMenu:
         self.YearAudiBox.place(x=130,y=340,width=30,height=25)
 
         self.HoraAudiBox=tk.Entry(root)
+        self.HoraAudiBox.config(validate="key", validatecommand=(reg, '%P'))
         self.HoraAudiBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.HoraAudiBox["font"] = ft
@@ -227,6 +238,7 @@ class AudiAdminMenu:
         self.HoraAudiBox.place(x=60,y=375,width=30,height=25)
 
         self.MinAudiBox=tk.Entry(root)
+        self.MinAudiBox.config(validate="key", validatecommand=(reg, '%P'))
         self.MinAudiBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
         self.MinAudiBox["font"] = ft

@@ -111,12 +111,15 @@ class Sala:
     def sala(self):# metodo para crear salas desde admin crear sala
                    #es para evitar el crear una sala con el mismo numero en el viejo menu
         pass
-            
-sale=Sala()
-if(sale.get_numsala_db(2)):
-    print("la sala 2 existe")
+    
+    def listsalas(self): #devuelve todas la lista de salas
+        conexion=sqlite3.connect("salas.db")
+        cursor=conexion.cursor()
+        cursor.execute(f"SELECT * FROM salas;")
+        mem=cursor.fetchall()
+        return mem
+                
 
-         
 
 
 
