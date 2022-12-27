@@ -379,11 +379,11 @@ class ReservaMenuUsr:
         if (indice_butaca):
             butacaselect=self.ButacasListBox.get(indice_butaca[0])
             auditemp=Audicion()
-            auditemp.recup_audi_id(self.idaudi)
+            auditemp.recup_audi_id(self.idaudi)#recuperamos audi_id para guardar dato de la sala
             butemp=Butaca()
-            butemp.ocupar(self.idaudi,auditemp.sala,butacaselect)
+            butemp.ocupar(self.idaudi,auditemp.sala,butacaselect)#ocupa butaca
             butemp.modificar()
-            self.butacaselect=butemp.id
+            self.butacaselect=butemp.id#guardamos el id de la butaca
         else:
             messagebox.showerror('Seleccione Asiento',"seleccione Asiento")        
         

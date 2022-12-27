@@ -13,7 +13,7 @@ def validate(input):
         print(input)
         return True
                           
-    elif input is "":
+    elif input is " ":
         print(input)
         return True
   
@@ -186,7 +186,7 @@ class AudiAdminMenu:
         FechaAudiLab["font"] = ft
         FechaAudiLab["fg"] = "#333333"
         FechaAudiLab["justify"] = "center"
-        FechaAudiLab["text"] = "Fecha"
+        FechaAudiLab["text"] = "Hora"
         FechaAudiLab.place(x=0,y=375,width=70,height=25)
 
         GLabel_467=tk.Label(root)
@@ -194,7 +194,7 @@ class AudiAdminMenu:
         GLabel_467["font"] = ft
         GLabel_467["fg"] = "#333333"
         GLabel_467["justify"] = "center"
-        GLabel_467["text"] = "Hora"
+        GLabel_467["text"] = "Fecha"
         GLabel_467.place(x=0,y=340,width=70,height=25)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
         self.DiaAudiBox=tk.Entry(root)
