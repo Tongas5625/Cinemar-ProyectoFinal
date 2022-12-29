@@ -9,13 +9,25 @@ from salaypeli_adm import SalayPeli
 from PIL import ImageTk, ImageColor, Image
 import os
 
-        
+def valida(input): # funcion para validar box que solo recibe numeros
+    if input.isdigit():
+        print(input)
+        return True
+                          
+    elif input is "":
+        print(input)
+        return True
+  
+    else:
+        print(input)
+        return False        
 
 
 class ModificarSalAdmin:
     def __init__(self, root, id_usr):
         root.focus()
         root.grab_set()
+        reg=root.register(valida)
         self.usr=Usuario()
         self.usr.recup_usr_db_id(id_usr)        
         #setting title
@@ -40,16 +52,19 @@ class ModificarSalAdmin:
         salatemp=Sala()
         listsalas=[]
         listsalas=salatemp.listsalas()
-        self.treeview = ttk.Treeview(columns=("Tipos", "Asientos"))
-        self.treeview.column("#0",anchor=CENTER, stretch=NO, width=70)
-        self.treeview.column("#1",anchor=CENTER, stretch=NO, width=70)
-        self.treeview.heading("#0", text="Numero")
-        self.treeview.heading("#1", text="Tipo")
-        self.treeview.heading("#2", text="Asientos")
+        self.treeview = ttk.Treeview(columns=("Numero","Tipos", "Asientos"))
+        self.treeview.column("#0",anchor=CENTER, stretch=NO, width=50)
+        self.treeview.column("#1",anchor=CENTER, stretch=NO, width=100)
+        self.treeview.column("#2",anchor=CENTER, stretch=NO, width=50)
+        self.treeview.column("#3",anchor=CENTER, stretch=NO, width=100)
+        self.treeview.heading("#0", text="ID")
+        self.treeview.heading("#1", text="Numero")
+        self.treeview.heading("#2", text="Tipo")
+        self.treeview.heading("#3", text="Asientos")
         print (listsalas)
         for i in listsalas:
-            self.treeview.insert("",tk.END,text=f"{i[1]}",values=(f"{i[2]}", f"{i[3]}"))
-        self.treeview.place(x=100,y=100,width=400,height=170) 
+            self.treeview.insert("",tk.END,text=f"{i[0]}",values=(f"{i[1]}", f"{i[2]}", f"{i[3]}"))
+        self.treeview.place(x=150,y=100,width=300,height=170) 
         
 
         GLabel_801=tk.Label(root)
@@ -76,14 +91,15 @@ class ModificarSalAdmin:
         GLabel_37["text"] = "Asientos"
         GLabel_37.place(x=420,y=290,width=70,height=25)
 
-        GLineEdit_840=tk.Entry(root)
-        GLineEdit_840["borderwidth"] = "1px"
+        self.NumSalaBox=tk.Entry(root)
+        self.NumSalaBox.config(validate="key", validatecommand=(reg, '%P'))
+        self.NumSalaBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
-        GLineEdit_840["font"] = ft
-        GLineEdit_840["fg"] = "#333333"
-        GLineEdit_840["justify"] = "center"
-        GLineEdit_840["text"] = "NumeroSala"
-        GLineEdit_840.place(x=100,y=340,width=70,height=25)
+        self.NumSalaBox["font"] = ft
+        self.NumSalaBox["fg"] = "#333333"
+        self.NumSalaBox["justify"] = "center"
+        self.NumSalaBox["text"] = "NumeroSala"
+        self.NumSalaBox.place(x=100,y=340,width=70,height=25)
 
         
         
@@ -95,14 +111,15 @@ class ModificarSalAdmin:
         GListBox_980["justify"] = "center"
         GListBox_980.place(x=260,y=340,width=80,height=25)
 
-        GLineEdit_381=tk.Entry(root)
-        GLineEdit_381["borderwidth"] = "1px"
+        self.NumAsientosBox=tk.Entry(root)
+        self.NumAsientosBox.config(validate="key", validatecommand=(reg, '%P'))
+        self.NumAsientosBox["borderwidth"] = "1px"
         ft = tkFont.Font(family='Comics',size=10)
-        GLineEdit_381["font"] = ft
-        GLineEdit_381["fg"] = "#333333"
-        GLineEdit_381["justify"] = "center"
-        GLineEdit_381["text"] = "Asientos Sala"
-        GLineEdit_381.place(x=420,y=340,width=70,height=25)
+        self.NumAsientosBox["font"] = ft
+        self.NumAsientosBox["fg"] = "#333333"
+        self.NumAsientosBox["justify"] = "center"
+        self.NumAsientosBox["text"] = "Asientos Sala"
+        self.NumAsientosBox.place(x=420,y=340,width=70,height=25)
 
         GButton_108=tk.Button(root)
         GButton_108["bg"] = "#f0f0f0"
@@ -116,15 +133,18 @@ class ModificarSalAdmin:
       
         
     def GButton_108_command(self):
-        print("command")
+        
         item = self.treeview.selection()
-        print(item)
         # A partir de este ID retornar el texto del elemento.
-        text = self.treeview.item(item, option="text")
+        idsala = self.treeview.item(item, option="text")
+        salatemp=Sala()
+        salatemp.recup_sala_db_id(item)
+        
         # Mostrarlo en un cuadro de diálogo.
-        messagebox.showinfo(message=text, title="Selección")
+        # messagebox.showinfo(message=text, title="Selección")
     
-    
+
+            
         
 if __name__ == "__main__":
     root = tk.Tk()
